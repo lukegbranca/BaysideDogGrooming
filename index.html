@@ -199,32 +199,76 @@
     /* ── HERO ────────────────────────────────────────────────── */
     .hero {
       padding-top: 72px;
-      background: var(--cream);
+      background: linear-gradient(160deg, #e8f5dc 0%, #f4faf0 35%, #ffffff 60%, #edf7e3 100%);
       position: relative;
       overflow: hidden;
     }
 
-    /* Hero background mesh — subtle radial lighting */
+    /* large soft green blobs for depth */
     .hero::before {
       content: '';
       position: absolute;
       inset: 0;
       background:
-        radial-gradient(ellipse 70% 60% at 20% 30%, rgba(118,196,66,0.1) 0%, transparent 60%),
-        radial-gradient(ellipse 50% 50% at 80% 20%, rgba(118,196,66,0.07) 0%, transparent 55%),
-        radial-gradient(ellipse 80% 40% at 50% 100%, rgba(90,163,42,0.06) 0%, transparent 55%);
+        radial-gradient(ellipse 55% 55% at 5% 15%,  rgba(118,196,66,0.22) 0%, transparent 60%),
+        radial-gradient(ellipse 40% 40% at 95% 10%,  rgba(90,163,42,0.14)  0%, transparent 55%),
+        radial-gradient(ellipse 60% 35% at 50% 105%, rgba(118,196,66,0.18) 0%, transparent 55%),
+        radial-gradient(ellipse 30% 30% at 80% 60%,  rgba(118,196,66,0.10) 0%, transparent 50%);
       pointer-events: none;
     }
 
-    /* dot grid texture */
+    /* dot grid + diagonal line texture combined */
     .hero::after {
       content: '';
       position: absolute;
       inset: 0;
-      background-image: radial-gradient(circle, rgba(118,196,66,0.18) 1px, transparent 1px);
-      background-size: 28px 28px;
-      opacity: 0.5;
+      background-image:
+        radial-gradient(circle, rgba(118,196,66,0.22) 1px, transparent 1px),
+        repeating-linear-gradient(
+          55deg,
+          transparent,
+          transparent 24px,
+          rgba(118,196,66,0.06) 24px,
+          rgba(118,196,66,0.06) 25px
+        );
+      background-size: 28px 28px, auto;
+      opacity: 0.65;
       pointer-events: none;
+    }
+
+    /* decorative large circle orbs */
+    .hero-orb {
+      position: absolute;
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .hero-orb-1 {
+      width: 480px; height: 480px;
+      background: radial-gradient(circle, rgba(118,196,66,0.12) 0%, transparent 70%);
+      top: -160px; left: -140px;
+      animation: orbDrift 12s ease-in-out infinite;
+    }
+
+    .hero-orb-2 {
+      width: 320px; height: 320px;
+      background: radial-gradient(circle, rgba(90,163,42,0.10) 0%, transparent 70%);
+      top: 10%; right: -80px;
+      animation: orbDrift 9s ease-in-out infinite reverse;
+    }
+
+    .hero-orb-3 {
+      width: 220px; height: 220px;
+      background: radial-gradient(circle, rgba(118,196,66,0.14) 0%, transparent 70%);
+      bottom: 15%; left: 25%;
+      animation: orbDrift 14s ease-in-out infinite;
+    }
+
+    @keyframes orbDrift {
+      0%, 100% { transform: translate(0,    0)    scale(1);    }
+      33%       { transform: translate(18px, -22px) scale(1.05); }
+      66%       { transform: translate(-12px, 14px) scale(0.96); }
     }
 
     .hero-inner {
@@ -455,11 +499,12 @@
     .hero-photo-label span {
       background: var(--white);
       color: var(--dark);
-      padding: 5px 14px;
-      border-radius: 3px;
+      padding: 6px 16px;
+      border-radius: 4px;
       font-size: 9px;
       letter-spacing: 2.5px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.18);
+      border: 1.5px solid var(--green);
+      box-shadow: 0 2px 10px rgba(0,0,0,0.2);
     }
 
     /* ── TRUST BAR ───────────────────────────────────────────── */
@@ -881,21 +926,21 @@
       flex-direction: column;
       justify-content: center;
       align-items: flex-start;
-      padding: 28px 32px;
-      background: linear-gradient(90deg, rgba(10,20,8,0.72) 0%, rgba(10,20,8,0.35) 60%, transparent 100%);
+      padding: 24px 28px;
+      background: linear-gradient(100deg, rgba(8,18,5,0.78) 0%, rgba(8,18,5,0.55) 55%, transparent 100%);
       z-index: 2;
       pointer-events: none;
+      gap: 10px;
     }
 
     .gallery-review-badge {
-      display: flex;
+      display: inline-flex;
       align-items: center;
       gap: 8px;
       background: var(--white);
-      border-radius: 6px;
-      padding: 6px 12px;
-      margin-bottom: 14px;
-      box-shadow: 0 2px 12px rgba(0,0,0,0.25);
+      border-radius: 20px;
+      padding: 5px 14px 5px 10px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.3);
     }
 
     .gallery-review-badge .g-logo {
@@ -905,36 +950,24 @@
       letter-spacing: -0.5px;
     }
 
-    .gallery-review-badge .g-stars {
-      color: #F5A623;
-      font-size: 12px;
-      letter-spacing: 1px;
-    }
-
-    .gallery-review-badge .g-score {
-      font-size: 12px;
-      font-weight: 700;
-      color: var(--dark);
-    }
+    .gallery-review-badge .g-stars { color: #F5A623; font-size: 11px; }
+    .gallery-review-badge .g-score { font-size: 12px; font-weight: 700; color: var(--dark); }
 
     .gallery-review-snippet {
-      background: rgba(255,255,255,0.1);
-      backdrop-filter: blur(6px);
-      -webkit-backdrop-filter: blur(6px);
-      border: 1px solid rgba(255,255,255,0.2);
-      border-radius: 8px;
-      padding: 14px 16px;
-      max-width: 340px;
-      margin-bottom: 10px;
+      background: rgba(10,22,6,0.82);
+      border: 1px solid rgba(118,196,66,0.3);
+      border-radius: 10px;
+      padding: 12px 14px;
+      max-width: 310px;
     }
 
     .gallery-review-snippet p {
       font-size: 12px;
-      font-weight: 400;
-      color: var(--white);
+      font-weight: 300;
+      color: rgba(255,255,255,0.9);
       font-style: italic;
-      line-height: 1.6;
-      margin-bottom: 8px;
+      line-height: 1.55;
+      margin-bottom: 9px;
     }
 
     .gallery-review-author {
@@ -944,7 +977,7 @@
     }
 
     .gallery-review-avatar {
-      width: 26px; height: 26px;
+      width: 24px; height: 24px;
       border-radius: 50%;
       background: var(--green);
       display: flex;
@@ -954,21 +987,10 @@
       font-weight: 700;
       color: var(--dark);
       flex-shrink: 0;
-      font-family: 'Cormorant Garamond', serif;
     }
 
-    .gallery-review-name {
-      font-size: 11px;
-      font-weight: 600;
-      color: rgba(255,255,255,0.85);
-    }
-
-    .gallery-review-stars {
-      color: #F5A623;
-      font-size: 10px;
-      letter-spacing: 1px;
-      margin-left: auto;
-    }
+    .gallery-review-name { font-size: 11px; font-weight: 600; color: rgba(255,255,255,0.8); }
+    .gallery-review-stars { color: #F5A623; font-size: 10px; margin-left: auto; }
 
     /* ── REVIEWS ─────────────────────────────────────────────── */
     #reviews {
@@ -1390,6 +1412,9 @@
 
 <!-- ── HERO ─────────────────────────────────────────────────── -->
 <section class="hero" id="home">
+  <div class="hero-orb hero-orb-1"></div>
+  <div class="hero-orb hero-orb-2"></div>
+  <div class="hero-orb hero-orb-3"></div>
   <div class="hero-inner">
     <img src="images/logo.png" alt="Bayside Dog Grooming Salon" class="hero-logo" />
 
