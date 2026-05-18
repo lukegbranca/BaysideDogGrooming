@@ -1270,13 +1270,17 @@
       .hero-photos { height: 480px; padding: 20px 24px 0; }
       .hero-photo-card { width: 260px; }
       @keyframes orbit {
-        0%   { transform: translateX(0px)  translateY(0px) scale(1.00); z-index: 3; opacity: 1.00; }
-        12%  { transform: translateX(20px) translateY(3px) scale(0.96); z-index: 2; opacity: 0.96; }
-        25%  { transform: translateX(30px) translateY(6px) scale(0.91); z-index: 2; opacity: 0.90; }
-        50%  { transform: translateX(0px)  translateY(8px) scale(0.82); z-index: 1; opacity: 0.40; }
-        75%  { transform: translateX(-30px) translateY(6px) scale(0.91); z-index: 2; opacity: 0.90; }
-        88%  { transform: translateX(-20px) translateY(3px) scale(0.96); z-index: 2; opacity: 0.96; }
-        100% { transform: translateX(0px)  translateY(0px) scale(1.00); z-index: 3; opacity: 1.00; }
+        0%   { transform: translateX(0px)   translateY(0px)  scale(1.00); z-index: 3; opacity: 1.00; }
+        10%  { transform: translateX(100px) translateY(4px)  scale(0.97); z-index: 3; opacity: 0.97; }
+        12%  { transform: translateX(118px) translateY(5px)  scale(0.95); z-index: 2; opacity: 0.95; }
+        25%  { transform: translateX(168px) translateY(8px)  scale(0.88); z-index: 2; opacity: 0.88; }
+        37%  { transform: translateX(118px) translateY(12px) scale(0.82); z-index: 1; opacity: 0.65; }
+        50%  { transform: translateX(0px)   translateY(14px) scale(0.78); z-index: 1; opacity: 0.35; }
+        63%  { transform: translateX(-118px) translateY(12px) scale(0.82); z-index: 1; opacity: 0.65; }
+        75%  { transform: translateX(-168px) translateY(8px)  scale(0.88); z-index: 2; opacity: 0.88; }
+        88%  { transform: translateX(-118px) translateY(5px)  scale(0.95); z-index: 2; opacity: 0.95; }
+        90%  { transform: translateX(-100px) translateY(4px)  scale(0.97); z-index: 3; opacity: 0.97; }
+        100% { transform: translateX(0px)   translateY(0px)  scale(1.00); z-index: 3; opacity: 1.00; }
       }
 
       .gallery-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
