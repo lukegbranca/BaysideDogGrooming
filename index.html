@@ -4,339 +4,1377 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Bayside Dog Grooming Salon | Professional Dog Grooming</title>
-  <meta name="description" content="Bayside Dog Grooming Salon – professional, caring grooming services for your beloved dog. Book today!" />
-  <link rel="stylesheet" href="css/style.css" />
+  <meta name="description" content="Bayside Dog Grooming Salon – professional, caring grooming services for your beloved dog. Trusted by the Bayside community." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:      #1B3565;
+      --navy-dark: #122347;
+      --navy-light:#234880;
+      --blue:      #3D7FBF;
+      --sky:       #EDE5D8;
+      --white:     #FFFFFF;
+      --off-white: #F8F3EC;
+      --gold:      #D4BF9A;
+      --gold-hover:#C0AA84;
+      --text:      #1a1a2e;
+      --text-light:#4a5568;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      color: var(--text);
+      background: var(--white);
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+      opacity: 0.03;
+      pointer-events: none;
+      z-index: 9999;
+    }
+
+    /* ── NAV ─────────────────────────────────────────────────── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 48px;
+      height: 76px;
+      background: rgba(18, 35, 71, 0.96);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+
+    nav::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent 0%, rgba(212,191,154,0.5) 25%, rgba(212,191,154,1) 50%, rgba(212,191,154,0.5) 75%, transparent 100%);
+      animation: navBorderPulse 4s ease-in-out infinite;
+    }
+
+    @keyframes navBorderPulse {
+      0%, 100% { opacity: 0.45; }
+      50%       { opacity: 1; }
+    }
+
+    .nav-logo-icon {
+      color: var(--gold);
+      flex-shrink: 0;
+      opacity: 0.85;
+      transition: transform 0.4s ease, opacity 0.3s;
+    }
+
+    .nav-logo:hover .nav-logo-icon {
+      transform: rotate(-12deg) scale(1.12);
+      opacity: 1;
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+
+    .nav-wordmark {
+      display: flex;
+      flex-direction: column;
+      line-height: 1;
+    }
+
+    .nav-wordmark-main {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 22px;
+      font-weight: 400;
+      color: var(--white);
+      letter-spacing: 2px;
+    }
+
+    .nav-wordmark-sub {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 8px;
+      font-weight: 400;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-top: 3px;
+    }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+      gap: 36px;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: rgba(255,255,255,0.7);
+      font-size: 11px;
+      font-weight: 400;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      transition: color 0.25s;
+      position: relative;
+      padding-bottom: 2px;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -2px; left: 0;
+      width: 0; height: 1px;
+      background: var(--gold);
+      transition: width 0.25s ease;
+    }
+
+    .nav-links a:hover { color: rgba(255,255,255,0.95); }
+    .nav-links a:hover::after { width: 100%; }
+
+    .nav-cta {
+      background: transparent !important;
+      color: var(--gold) !important;
+      border: 1px solid rgba(212,191,154,0.6) !important;
+      padding: 9px 22px !important;
+      border-radius: 1px;
+      font-size: 10px !important;
+      font-weight: 500 !important;
+      letter-spacing: 2px !important;
+      transition: background 0.2s, border-color 0.2s, color 0.2s !important;
+    }
+
+    .nav-cta::after { display: none !important; }
+
+    .nav-cta:hover {
+      background: rgba(212,191,154,0.1) !important;
+      border-color: var(--gold) !important;
+      color: var(--gold) !important;
+    }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 4px;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 24px; height: 2px;
+      background: white;
+      transition: all 0.3s;
+    }
+
+    /* ── HERO ────────────────────────────────────────────────── */
+    .hero {
+      position: relative;
+      height: 100vh;
+      min-height: 600px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background-image: url('images/hero-grooming.webp');
+      background-size: cover;
+      background-position: center 30%;
+      filter: brightness(0.38);
+      transform: scale(1.02);
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 80% 70% at 50% 48%, rgba(10,20,50,0.6) 0%, rgba(10,20,50,0.05) 100%),
+        linear-gradient(to bottom, rgba(18,35,71,0.65) 0%, rgba(18,35,71,0.15) 40%, rgba(18,35,71,0.55) 100%);
+      z-index: 1;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 780px;
+      padding: 0 24px;
+      animation: heroFadeUp 1s ease-out both;
+    }
+
+    @keyframes heroFadeUp {
+      from { opacity: 0; transform: translateY(28px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero-eyebrow {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 18px;
+    }
+
+    .hero-eyebrow::before,
+    .hero-eyebrow::after {
+      content: '';
+      display: block;
+      width: 52px; height: 1px;
+      opacity: 0.65;
+      flex-shrink: 0;
+    }
+
+    .hero-eyebrow::before { background: linear-gradient(90deg, transparent, var(--gold)); }
+    .hero-eyebrow::after  { background: linear-gradient(90deg, var(--gold), transparent); }
+
+    .hero-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(48px, 7vw, 82px);
+      font-weight: 300;
+      color: var(--white);
+      line-height: 1.1;
+      margin-bottom: 24px;
+      letter-spacing: 1px;
+      text-shadow: 0 2px 20px rgba(0,0,0,0.45), 0 0 80px rgba(212,191,154,0.12);
+    }
+
+    .hero-title em {
+      font-style: italic;
+      color: rgba(255,255,255,0.9);
+    }
+
+    .hero-sub {
+      font-size: 14px;
+      font-weight: 300;
+      letter-spacing: 1.5px;
+      color: rgba(255,255,255,0.8);
+      margin-bottom: 44px;
+      line-height: 1.8;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      display: inline-block;
+      background: linear-gradient(105deg, #c8b386 0%, #dfd0a8 40%, #eee0c0 50%, #dfd0a8 60%, #c8b386 100%);
+      background-size: 250% auto;
+      color: var(--navy-dark);
+      padding: 16px 44px;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      text-decoration: none;
+      border-radius: 1px;
+      border: 1px solid transparent;
+      transition: background-position 0.6s ease, transform 0.2s, box-shadow 0.25s;
+      box-shadow: 0 4px 24px rgba(212,191,154,0.4), 0 1px 0 rgba(255,255,240,0.3) inset;
+      animation: btnShine 3s ease-in-out infinite alternate;
+    }
+
+    @keyframes btnShine {
+      from { background-position: 0% center; }
+      to   { background-position: 100% center; }
+    }
+
+    .btn-primary:hover {
+      background-position: right center;
+      transform: translateY(-3px);
+      box-shadow: 0 10px 36px rgba(212,191,154,0.55), 0 0 20px rgba(212,191,154,0.2);
+      animation-play-state: paused;
+    }
+
+    .btn-outline {
+      display: inline-block;
+      background: transparent;
+      color: rgba(255,255,255,0.85);
+      padding: 16px 44px;
+      font-size: 10px;
+      font-weight: 400;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      text-decoration: none;
+      border: 1px solid rgba(255,255,255,0.3);
+      border-radius: 1px;
+      transition: border-color 0.25s, color 0.25s, background 0.25s;
+    }
+
+    .btn-outline:hover {
+      border-color: rgba(212,191,154,0.7);
+      color: var(--gold);
+      background: rgba(212,191,154,0.06);
+    }
+
+    .hero-scroll {
+      position: absolute;
+      bottom: 36px; left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      color: rgba(255,255,255,0.5);
+      font-size: 10px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+    }
+
+    .hero-scroll::after {
+      content: '';
+      display: block;
+      width: 1px; height: 40px;
+      background: rgba(255,255,255,0.3);
+      animation: scrollPulse 2s infinite;
+    }
+
+    @keyframes scrollPulse {
+      0%, 100% { opacity: 0.3; }
+      50%       { opacity: 0.8; }
+    }
+
+    /* ── TRUST BAR ───────────────────────────────────────────── */
+    .trust-bar {
+      background: var(--navy-dark);
+      border-top: 1px solid rgba(212,191,154,0.12);
+      border-bottom: 1px solid rgba(212,191,154,0.12);
+      padding: 18px 48px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 48px;
+      flex-wrap: wrap;
+    }
+
+    .trust-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: rgba(255,255,255,0.6);
+      font-size: 11px;
+      letter-spacing: 1.5px;
+      font-weight: 300;
+    }
+
+    .trust-item svg { flex-shrink: 0; color: var(--gold); }
+
+    /* ── SECTIONS ────────────────────────────────────────────── */
+    section { padding: 96px 48px; }
+
+    .section-inner { max-width: 1140px; margin: 0 auto; }
+
+    .section-label {
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 16px;
+    }
+
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(36px, 4vw, 54px);
+      font-weight: 400;
+      color: var(--navy);
+      line-height: 1.15;
+      margin-bottom: 20px;
+    }
+
+    .section-title em { font-style: italic; color: var(--navy-light); }
+
+    .section-sub {
+      font-size: 14px;
+      font-weight: 300;
+      color: var(--text-light);
+      line-height: 1.9;
+      max-width: 560px;
+    }
+
+    .divider {
+      width: 56px; height: 1px;
+      background: linear-gradient(90deg, var(--gold), rgba(212,191,154,0.2));
+      margin: 28px 0;
+    }
+
+    /* ── SERVICES ────────────────────────────────────────────── */
+    #services {
+      background: var(--off-white);
+      background-image:
+        repeating-linear-gradient(0deg, transparent, transparent 28px, rgba(160,130,90,0.04) 28px, rgba(160,130,90,0.04) 29px),
+        repeating-linear-gradient(90deg, transparent, transparent 28px, rgba(160,130,90,0.04) 28px, rgba(160,130,90,0.04) 29px);
+    }
+
+    .services-header { text-align: center; margin-bottom: 64px; }
+    .services-header .section-sub { margin: 0 auto; }
+    .services-header .divider { margin: 24px auto; }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 28px;
+    }
+
+    .service-card {
+      background: var(--white);
+      border-radius: 2px;
+      padding: 48px 36px;
+      text-align: center;
+      transition: box-shadow 0.35s, transform 0.35s;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 2px 16px rgba(160,130,90,0.07);
+    }
+
+    .service-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 50%; right: 50%;
+      height: 2px;
+      background: var(--gold);
+      opacity: 0;
+      transition: left 0.35s ease, right 0.35s ease, opacity 0.2s;
+    }
+
+    .service-card:hover {
+      box-shadow: 0 16px 48px rgba(160,130,90,0.14);
+      transform: translateY(-5px);
+    }
+
+    .service-card:hover::before {
+      opacity: 1; left: 0; right: 0;
+    }
+
+    .service-icon {
+      width: 64px; height: 64px;
+      margin: 0 auto 24px;
+      background: var(--sky);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .service-icon svg { color: var(--navy); }
+
+    .service-card h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 24px;
+      font-weight: 500;
+      color: var(--navy);
+      margin-bottom: 14px;
+    }
+
+    .service-card p {
+      font-size: 13px;
+      color: var(--text-light);
+      line-height: 1.8;
+      font-weight: 300;
+    }
+
+    /* ── ABOUT ───────────────────────────────────────────────── */
+    #about { background: var(--white); }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 72px;
+      align-items: center;
+    }
+
+    .about-image-wrap { position: relative; }
+
+    .about-image-wrap img {
+      width: 100%;
+      height: 560px;
+      object-fit: cover;
+      object-position: center top;
+      border-radius: 4px;
+      display: block;
+    }
+
+    .about-badge {
+      position: absolute;
+      bottom: -20px; right: -20px;
+      background: var(--navy);
+      color: white;
+      width: 120px; height: 120px;
+      border-radius: 50%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      font-family: 'Cormorant Garamond', serif;
+      box-shadow: 0 8px 24px rgba(27,53,101,0.3);
+    }
+
+    .about-badge .year {
+      font-size: 28px;
+      font-weight: 400;
+      line-height: 1;
+    }
+
+    .about-badge .est {
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      opacity: 0.75;
+      margin-top: 2px;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 400;
+    }
+
+    .about-content { padding: 20px 0; }
+
+    .about-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 40px;
+      padding-top: 40px;
+      border-top: 1px solid rgba(27,53,101,0.1);
+    }
+
+    .stat { text-align: center; }
+
+    .stat-number {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 42px;
+      font-weight: 400;
+      color: var(--navy);
+      line-height: 1;
+    }
+
+    .stat-label {
+      font-size: 11px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--text-light);
+      margin-top: 6px;
+      font-weight: 400;
+    }
+
+    /* ── GALLERY ─────────────────────────────────────────────── */
+    #gallery {
+      background: var(--navy);
+      background-image:
+        radial-gradient(ellipse at 12% 40%, rgba(61,127,191,0.32) 0%, transparent 48%),
+        radial-gradient(ellipse at 88% 60%, rgba(61,127,191,0.22) 0%, transparent 44%),
+        radial-gradient(ellipse at 50% 5%,  rgba(212,191,154,0.1) 0%, transparent 38%),
+        radial-gradient(ellipse at 75% 90%, rgba(61,127,191,0.15) 0%, transparent 40%);
+      padding: 96px 48px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    #gallery::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent 0%, rgba(212,191,154,0.5) 20%, rgba(212,191,154,1) 50%, rgba(212,191,154,0.5) 80%, transparent 100%);
+      z-index: 2;
+    }
+
+    #gallery::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent 0%, rgba(212,191,154,0.3) 30%, rgba(212,191,154,0.7) 50%, rgba(212,191,154,0.3) 70%, transparent 100%);
+      z-index: 2;
+    }
+
+    #gallery .section-inner { position: relative; z-index: 2; }
+
+    .gallery-orb {
+      position: absolute;
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .gallery-orb-1 {
+      width: 480px; height: 480px;
+      background: radial-gradient(circle, rgba(61,127,191,0.22) 0%, transparent 70%);
+      top: -140px; left: -120px;
+      animation: orbFloat 11s ease-in-out infinite;
+    }
+
+    .gallery-orb-2 {
+      width: 320px; height: 320px;
+      background: radial-gradient(circle, rgba(212,191,154,0.1) 0%, transparent 70%);
+      bottom: -60px; right: 8%;
+      animation: orbFloat 9s ease-in-out infinite reverse;
+    }
+
+    .gallery-orb-3 {
+      width: 220px; height: 220px;
+      background: radial-gradient(circle, rgba(61,127,191,0.16) 0%, transparent 70%);
+      top: 45%; right: -60px;
+      animation: orbFloat 13s ease-in-out infinite;
+    }
+
+    @keyframes orbFloat {
+      0%, 100% { transform: translateY(0) scale(1); }
+      50%       { transform: translateY(-28px) scale(1.06); }
+    }
+
+    #gallery .section-label { color: var(--gold); }
+    #gallery .section-title { color: var(--white); }
+    #gallery .section-sub   { color: rgba(255,255,255,0.65); }
+    #gallery .divider       { background: var(--gold); }
+
+    .gallery-header { text-align: center; margin-bottom: 56px; }
+    .gallery-header .divider { margin: 24px auto; }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+
+    .gallery-item {
+      overflow: hidden;
+      border-radius: 4px;
+      position: relative;
+      height: 280px;
+    }
+
+    .gallery-item.wide {
+      grid-column: span 2;
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.5s ease;
+    }
+
+    .gallery-item:hover img { transform: scale(1.05); }
+
+    /* ── REVIEWS ─────────────────────────────────────────────── */
+    #reviews {
+      background: var(--off-white);
+      background-image: radial-gradient(ellipse at 50% 0%, rgba(200,169,126,0.1) 0%, transparent 60%);
+    }
+
+    .reviews-header { text-align: center; margin-bottom: 64px; }
+    .reviews-header .divider { margin: 24px auto; }
+
+    .google-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      background: white;
+      border: 1px solid rgba(27,53,101,0.1);
+      border-radius: 40px;
+      padding: 10px 20px 10px 16px;
+      margin-bottom: 32px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    }
+
+    .google-logo {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+    }
+
+    .google-logo .g-blue,   .review-google-icon .g-blue   { color: #4285F4; }
+    .google-logo .g-red,    .review-google-icon .g-red    { color: #EA4335; }
+    .google-logo .g-yellow, .review-google-icon .g-yellow { color: #FBBC05; }
+    .google-logo .g-green,  .review-google-icon .g-green  { color: #34A853; }
+
+    .google-rating {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      color: var(--text-light);
+    }
+
+    .stars-gold { color: #F5A623; font-size: 14px; letter-spacing: 1px; }
+
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 24px;
+    }
+
+    .review-card {
+      background: var(--white);
+      border: 1px solid rgba(27,53,101,0.07);
+      border-radius: 4px;
+      padding: 36px 32px;
+      position: relative;
+      transition: box-shadow 0.3s;
+    }
+
+    .review-card:hover { box-shadow: 0 8px 32px rgba(27,53,101,0.1); }
+
+    .review-stars { color: #F5A623; font-size: 16px; letter-spacing: 2px; margin-bottom: 16px; }
+
+    .review-text {
+      font-size: 13.5px;
+      line-height: 1.85;
+      color: var(--text-light);
+      font-weight: 300;
+      margin-bottom: 24px;
+      font-style: italic;
+    }
+
+    .review-author {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .review-avatar {
+      width: 40px; height: 40px;
+      border-radius: 50%;
+      background: var(--navy);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 15px;
+      font-weight: 600;
+      font-family: 'Cormorant Garamond', serif;
+      flex-shrink: 0;
+    }
+
+    .review-name {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--navy);
+    }
+
+    .review-date {
+      font-size: 11px;
+      color: var(--text-light);
+      margin-top: 2px;
+    }
+
+    .review-google-icon {
+      position: absolute;
+      top: 20px; right: 20px;
+      font-size: 11px;
+      font-weight: 700;
+      font-family: 'Montserrat', sans-serif;
+      letter-spacing: -0.3px;
+      opacity: 0.85;
+    }
+
+    .reviews-note {
+      text-align: center;
+      margin-top: 48px;
+      font-size: 13px;
+      color: var(--text-light);
+    }
+
+    .reviews-note a {
+      color: var(--navy);
+      font-weight: 600;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    /* ── CONTACT ─────────────────────────────────────────────── */
+    #contact {
+      background: var(--navy);
+      background-image:
+        radial-gradient(ellipse at 50% 100%, rgba(200,169,126,0.12) 0%, transparent 55%),
+        radial-gradient(ellipse at 80% 30%, rgba(61,127,191,0.1) 0%, transparent 40%);
+      text-align: center;
+    }
+
+    #contact .section-label { color: var(--gold); }
+    #contact .section-title { color: var(--white); }
+    #contact .divider { background: var(--gold); margin: 24px auto; }
+
+    .contact-sub {
+      font-size: 14px;
+      color: rgba(255,255,255,0.65);
+      line-height: 1.9;
+      max-width: 500px;
+      margin: 0 auto 48px;
+      font-weight: 300;
+    }
+
+    .contact-methods {
+      display: flex;
+      justify-content: center;
+      gap: 32px;
+      flex-wrap: wrap;
+      margin-bottom: 48px;
+    }
+
+    .contact-method {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: rgba(255,255,255,0.8);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 400;
+      transition: color 0.2s;
+      padding: 16px 28px;
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 2px;
+    }
+
+    .contact-method:hover { color: var(--gold); border-color: var(--gold); }
+    .contact-method svg { flex-shrink: 0; }
+
+    .contact-cta-group {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .btn-gold {
+      display: inline-block;
+      background: var(--gold);
+      color: var(--navy-dark);
+      padding: 17px 48px;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      text-decoration: none;
+      border-radius: 1px;
+      box-shadow: 0 4px 20px rgba(212,191,154,0.25);
+      transition: background 0.25s, transform 0.2s, box-shadow 0.25s;
+    }
+
+    .btn-gold:hover {
+      background: var(--gold-hover);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(212,191,154,0.3);
+    }
+
+    .btn-outline-white {
+      display: inline-block;
+      background: transparent;
+      color: rgba(255,255,255,0.75);
+      padding: 17px 48px;
+      font-size: 10px;
+      font-weight: 400;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      text-decoration: none;
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 1px;
+      transition: border-color 0.25s, color 0.25s;
+    }
+
+    .btn-outline-white:hover {
+      border-color: rgba(212,191,154,0.6);
+      color: var(--gold);
+    }
+
+    /* ── FOOTER ──────────────────────────────────────────────── */
+    footer {
+      background: var(--navy-dark);
+      padding: 32px 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .footer-wordmark { line-height: 1; }
+
+    .footer-wordmark-main {
+      display: block;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 18px;
+      font-weight: 400;
+      color: rgba(255,255,255,0.8);
+      letter-spacing: 2px;
+    }
+
+    .footer-wordmark-sub {
+      display: block;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 7px;
+      font-weight: 400;
+      letter-spacing: 3.5px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-top: 4px;
+    }
+
+    .footer-text {
+      font-size: 12px;
+      color: rgba(255,255,255,0.4);
+      font-weight: 300;
+    }
+
+    .footer-links { display: flex; gap: 24px; }
+
+    .footer-links a {
+      font-size: 12px;
+      color: rgba(255,255,255,0.45);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover { color: var(--gold); }
+
+    /* ── RESPONSIVE ──────────────────────────────────────────── */
+    @media (max-width: 900px) {
+      nav { padding: 0 24px; }
+      .nav-links { display: none; }
+      .nav-links.open {
+        display: flex; flex-direction: column;
+        position: fixed; top: 76px; left: 0; right: 0;
+        background: var(--navy);
+        padding: 24px; gap: 20px;
+        box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+      }
+      .hamburger { display: flex; }
+
+      section { padding: 72px 24px; }
+      #gallery { padding: 72px 24px; }
+
+      .about-grid { grid-template-columns: 1fr; gap: 40px; }
+      .about-image-wrap img { height: 400px; }
+      .about-badge { right: 0; bottom: -12px; }
+
+      .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+      .gallery-item.wide { grid-column: span 2; }
+
+      .trust-bar { gap: 24px; padding: 20px 24px; }
+      footer { flex-direction: column; text-align: center; padding: 24px; }
+    }
+
+    @media (max-width: 480px) {
+      .gallery-grid { grid-template-columns: 1fr 1fr; }
+      .gallery-item.wide { grid-column: span 2; }
+      .hero-title { font-size: 38px; }
+      .about-stats { grid-template-columns: repeat(3, 1fr); gap: 12px; }
+      .stat-number { font-size: 30px; }
+    }
+  </style>
 </head>
 <body>
 
-  <!-- ===== HEADER ===== -->
-  <header>
-    <div class="nav-inner">
-      <a href="#" class="logo">
-        <div class="logo-icon">🐾</div>
-        <div class="logo-text">
-          <strong>Bayside Dog Grooming</strong>
-          <span>Salon</span>
-        </div>
-      </a>
-      <nav>
-        <ul>
-          <li><a href="#about">About</a></li>
-          <li><a href="#services">Services</a></li>
-          <li><a href="#gallery">Gallery</a></li>
-          <li><a href="#reviews">Reviews</a></li>
-          <li><a href="#contact" class="nav-cta">Book Now</a></li>
-        </ul>
-      </nav>
+<!-- ── NAV ──────────────────────────────────────────────────── -->
+<nav>
+  <a href="#home" class="nav-logo">
+    <svg class="nav-logo-icon" width="28" height="28" viewBox="0 0 64 64" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <ellipse cx="32" cy="44" rx="17" ry="13"/>
+      <ellipse cx="13" cy="28" rx="7" ry="9.5" transform="rotate(-16 13 28)"/>
+      <ellipse cx="27" cy="19" rx="7" ry="9.5" transform="rotate(-5 27 19)"/>
+      <ellipse cx="43" cy="19" rx="7" ry="9.5" transform="rotate(5 43 19)"/>
+      <ellipse cx="56" cy="28" rx="7" ry="9.5" transform="rotate(16 56 28)"/>
+    </svg>
+    <div class="nav-wordmark">
+      <span class="nav-wordmark-main">Bayside Dog Grooming</span>
+      <span class="nav-wordmark-sub">Salon</span>
     </div>
-  </header>
+  </a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#gallery">Gallery</a></li>
+    <li><a href="#reviews">Reviews</a></li>
+    <li><a href="#contact" class="nav-cta">Book Now</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
 
-  <!-- ===== HERO ===== -->
-  <section class="hero">
-    <img
-      src="images/hero-dogs.jpg"
-      alt="Happy groomed dogs at Bayside Dog Grooming Salon"
-      class="hero-img"
-    />
-    <div class="hero-overlay"></div>
-    <div class="hero-content">
-      <h1>Your Dog Deserves the <span>Very Best</span></h1>
-      <p>Professional, caring grooming for every breed — from a pamper wash to a full groom. Trusted by families across the Bayside community.</p>
-      <a href="#contact" class="btn btn-primary">Book an Appointment</a>
-      <a href="#services" class="btn btn-secondary">Our Services</a>
+<!-- ── HERO ─────────────────────────────────────────────────── -->
+<section class="hero" id="home">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <p class="hero-eyebrow">Bayside, Melbourne</p>
+    <h1 class="hero-title">Your Dog Deserves<br /><em>the Very Best</em></h1>
+    <p class="hero-sub">Professional grooming for every breed — trusted by Bayside<br />families for years. Every dog leaves looking &amp; feeling amazing.</p>
+    <div class="hero-buttons">
+      <a href="#contact" class="btn-primary">Book an Appointment</a>
+      <a href="#services" class="btn-outline">Our Services</a>
     </div>
-  </section>
+  </div>
+  <div class="hero-scroll">Scroll</div>
+</section>
 
-  <!-- ===== ABOUT ===== -->
-  <section class="about-bg" id="about">
-    <div class="section-inner about-grid">
-      <div class="about-img-wrap">
-        <img src="images/about-groomer.jpg" alt="Friendly groomer caring for a dog at Bayside" />
-      </div>
-      <div>
-        <p class="section-label">About Us</p>
-        <h2 class="section-title">A Salon Built on Love &amp; Care</h2>
-        <p>At Bayside Dog Grooming Salon, we treat every dog like our own. Our experienced team is passionate about making your pet look and feel their absolute best — in a warm, calm, and friendly environment.</p>
-        <p style="margin-top:16px;">Dogs are able to have a bit of a play with each other while waiting their turn, keeping them relaxed and happy throughout their visit. We take pride in our work and look forward to welcoming you and your furry family member.</p>
-        <div class="about-badges">
-          <span class="badge">🐶 All Breeds Welcome</span>
-          <span class="badge">✂️ Experienced Groomers</span>
-          <span class="badge">💚 Gentle &amp; Caring</span>
-          <span class="badge">⭐ 4.0 Star Rating</span>
-        </div>
-      </div>
-    </div>
-  </section>
+<!-- ── TRUST BAR ─────────────────────────────────────────────── -->
+<div class="trust-bar">
+  <div class="trust-item">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+    4.0 Google Rating
+  </div>
+  <div class="trust-item">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+    All Breeds Welcome
+  </div>
+  <div class="trust-item">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+    Gentle &amp; Caring
+  </div>
+  <div class="trust-item">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+    Mon – Sat Available
+  </div>
+  <div class="trust-item">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+    Experienced Groomers
+  </div>
+</div>
 
-  <!-- ===== SERVICES ===== -->
-  <section id="services">
-    <div class="section-inner">
+<!-- ── SERVICES ──────────────────────────────────────────────── -->
+<section id="services">
+  <div class="section-inner">
+    <div class="services-header">
       <p class="section-label">What We Offer</p>
-      <h2 class="section-title">Our Grooming Services</h2>
-      <p class="section-sub">Whether your pup needs a quick freshen-up or a full pamper session, we have a service to suit every dog and budget.</p>
-
-      <div class="services-grid">
-
-        <div class="service-card">
-          <div class="service-card-img">
-            <img src="images/service-full-groom.jpg" alt="Full groom service for dogs" />
-          </div>
-          <div class="service-card-body">
-            <h3>Full Groom</h3>
-            <p>Bath, blow-dry, brush-out, breed-specific cut, ear clean and nail trim. Your dog leaves looking their absolute best.</p>
-          </div>
-        </div>
-
-        <div class="service-card">
-          <div class="service-card-img">
-            <img src="images/service-bath-brush.jpg" alt="Bath and brush out dog grooming service" />
-          </div>
-          <div class="service-card-body">
-            <h3>Bath &amp; Brush</h3>
-            <p>A thorough shampoo and conditioning wash followed by a professional blow-dry and brush-out to keep coats healthy and shiny.</p>
-          </div>
-        </div>
-
-        <div class="service-card">
-          <div class="service-card-img">
-            <img src="images/service-nail-trim.jpg" alt="Dog nail trimming and filing service" />
-          </div>
-          <div class="service-card-body">
-            <h3>Nail Trim &amp; File</h3>
-            <p>Careful clipping and filing to keep your dog comfortable on their paws. Perfectly finished nails every time.</p>
-          </div>
-        </div>
-
-        <div class="service-card">
-          <div class="service-card-img">
-            <img src="images/service-puppy-groom.jpg" alt="Puppy's first groom introductory service" />
-          </div>
-          <div class="service-card-body">
-            <h3>Puppy's First Groom</h3>
-            <p>A gentle introduction to the salon experience — designed to build confidence and make grooming a positive routine from day one.</p>
-          </div>
-        </div>
-
-        <div class="service-card">
-          <div class="service-card-img">
-            <img src="images/service-deshed.jpg" alt="Deshedding treatment for dogs" />
-          </div>
-          <div class="service-card-body">
-            <h3>De-shedding Treatment</h3>
-            <p>Specialised treatment to reduce shedding, perfect for double-coated breeds like retrievers and huskies.</p>
-          </div>
-        </div>
-
-        <div class="service-card">
-          <div class="service-card-img">
-            <img src="images/service-tidy-up.jpg" alt="Dog tidy up trim service" />
-          </div>
-          <div class="service-card-body">
-            <h3>Tidy-Up Trim</h3>
-            <p>A neat scissor tidy of face, paws and sanitary areas to keep your dog looking fresh between full grooming appointments.</p>
-          </div>
-        </div>
-
-      </div>
+      <h2 class="section-title">Tailored Grooming for<br /><em>Every Dog</em></h2>
+      <div class="divider"></div>
+      <p class="section-sub">From a quick freshen-up to a full pamper session — we offer a range of grooming services to suit every breed and every budget.</p>
     </div>
-  </section>
+    <div class="services-grid">
 
-  <!-- ===== GALLERY ===== -->
-  <section class="gallery-bg" id="gallery">
-    <div class="section-inner">
-      <p class="section-label">Our Work</p>
-      <h2 class="section-title">Fresh From the Salon</h2>
-      <p class="section-sub">Every dog that comes through our doors leaves looking — and feeling — amazing.</p>
+      <div class="service-card">
+        <div class="service-icon">
+          <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+            <path d="M20 7H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"/>
+            <path d="M12 7V5a2 2 0 0 0-2-2H8"/>
+          </svg>
+        </div>
+        <h3>Full Groom</h3>
+        <p>Bath, blow-dry, brush-out, breed-specific cut, ear clean and nail trim. Your dog leaves looking their absolute best.</p>
+      </div>
 
-      <div class="gallery-grid">
-        <div class="gallery-item wide">
-          <img src="images/gallery-golden-retriever.jpg" alt="Golden retriever beautifully groomed" />
+      <div class="service-card">
+        <div class="service-icon">
+          <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+            <path d="M7 16.3c2.2 0 4-1.83 4-4.05 0-1.16-.57-2.26-1.71-3.19S7.29 7.5 7 5c-.29 2.51-1.87 4.5-3 5.06A4.07 4.07 0 0 0 3 12.25C3 14.47 4.8 16.3 7 16.3z"/>
+            <path d="M12.56 6.6A10.97 10.97 0 0 0 14 3.02c.5 2.5 2 4.9 4 6.5s3 3.5 3 5.5a6.98 6.98 0 0 1-11.91 4.97"/>
+          </svg>
         </div>
-        <div class="gallery-item">
-          <img src="images/gallery-schnauzer.jpg" alt="Mini Schnauzer after a groom" />
+        <h3>Bath &amp; Brush</h3>
+        <p>A thorough shampoo and conditioning wash followed by a professional blow-dry and brush-out to keep coats healthy and shiny.</p>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon">
+          <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+            <circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/>
+            <line x1="20" y1="4" x2="8.12" y2="15.88"/>
+            <line x1="14.47" y1="14.48" x2="20" y2="20"/>
+            <line x1="8.12" y1="8.12" x2="12" y2="12"/>
+          </svg>
         </div>
-        <div class="gallery-item">
-          <img src="images/gallery-pug.jpg" alt="Clean and happy pug" />
+        <h3>Nail Trim &amp; File</h3>
+        <p>Careful clipping and filing to keep your dog comfortable on their paws. Perfectly finished nails every time.</p>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon">
+          <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+          </svg>
         </div>
-        <div class="gallery-item">
-          <img src="images/gallery-groodle.jpg" alt="Groodle after grooming appointment" />
+        <h3>Puppy's First Groom</h3>
+        <p>A gentle introduction to the salon experience — designed to build confidence and make grooming a positive routine from day one.</p>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon">
+          <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+            <polyline points="9 22 9 12 15 12 15 22"/>
+          </svg>
         </div>
-        <div class="gallery-item">
-          <img src="images/gallery-cavoodle.jpg" alt="Cavoodle after a beautiful cut" />
+        <h3>De-shedding Treatment</h3>
+        <p>Specialised treatment to reduce shedding — perfect for double-coated breeds like golden retrievers and huskies.</p>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon">
+          <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+            <line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/>
+          </svg>
         </div>
-        <div class="gallery-item wide">
-          <img src="images/gallery-salon.jpg" alt="Inside Bayside Dog Grooming Salon" />
+        <h3>Tidy-Up Trim</h3>
+        <p>A neat scissor tidy of face, paws and sanitary areas to keep your dog looking fresh between full grooming appointments.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── ABOUT ──────────────────────────────────────────────────── -->
+<section id="about">
+  <div class="section-inner">
+    <div class="about-grid">
+
+      <div class="about-image-wrap">
+        <img src="images/about-salon.webp" alt="Groomer caring for a dog at Bayside Dog Grooming Salon" />
+        <div class="about-badge">
+          <span class="year">4.0</span>
+          <span class="est">Stars</span>
         </div>
       </div>
-    </div>
-  </section>
 
-  <!-- ===== REVIEWS ===== -->
-  <section id="reviews">
-    <div class="section-inner">
+      <div class="about-content">
+        <p class="section-label">Our Story</p>
+        <h2 class="section-title">A Salon Built on<br /><em>Love &amp; Care</em></h2>
+        <div class="divider"></div>
+        <p class="section-sub" style="max-width:100%;">
+          At Bayside Dog Grooming Salon we treat every dog like our own. Our experienced team, led by Vanessa and her dedicated staff, is passionate about making your pet look and feel their absolute best — in a warm, calm and welcoming environment.
+        </p>
+        <p class="section-sub" style="max-width:100%; margin-top: 20px;">
+          Dogs are able to have a bit of a play with each other while waiting their turns, keeping them relaxed and happy throughout their visit. From golden retrievers and schnauzers to pugs and cavoodles — every breed is welcome and every dog is given the care and attention they deserve.
+        </p>
+        <div class="about-stats">
+          <div class="stat">
+            <div class="stat-number">4.0</div>
+            <div class="stat-label">Google Rating</div>
+          </div>
+          <div class="stat">
+            <div class="stat-number">All</div>
+            <div class="stat-label">Breeds Welcome</div>
+          </div>
+          <div class="stat">
+            <div class="stat-number">6</div>
+            <div class="stat-label">Days a Week</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── GALLERY ────────────────────────────────────────────────── -->
+<section id="gallery">
+  <div class="gallery-orb gallery-orb-1"></div>
+  <div class="gallery-orb gallery-orb-2"></div>
+  <div class="gallery-orb gallery-orb-3"></div>
+  <div class="section-inner">
+    <div class="gallery-header">
+      <p class="section-label">Fresh From the Salon</p>
+      <h2 class="section-title" style="color:white;">Happy Dogs,<br /><em style="color:rgba(255,255,255,0.75);">Happy Lives</em></h2>
+      <div class="divider"></div>
+    </div>
+    <div class="gallery-grid">
+      <div class="gallery-item wide"><img src="images/hero-grooming.webp" alt="Dog beautifully groomed at Bayside Dog Grooming Salon" /></div>
+      <div class="gallery-item"><img src="images/gallery-dog-3.webp" alt="Happy dog after grooming" /></div>
+      <div class="gallery-item"><img src="images/gallery-dog-1.webp" alt="Dog after full groom" /></div>
+      <div class="gallery-item wide"><img src="images/gallery-dog-2.webp" alt="Dog looking great after a groom" /></div>
+    </div>
+  </div>
+</section>
+
+<!-- ── REVIEWS ────────────────────────────────────────────────── -->
+<section id="reviews">
+  <div class="section-inner">
+    <div class="reviews-header">
+      <div class="google-badge">
+        <span class="google-logo">
+          <span class="g-blue">G</span><span class="g-red">o</span><span class="g-yellow">o</span><span class="g-blue">g</span><span class="g-green">l</span><span class="g-red">e</span>
+        </span>
+        <div class="google-rating">
+          <span class="stars-gold">★★★★</span>
+          <strong>4.0</strong>
+          <span style="color:#9aa5b4;">· Google Reviews</span>
+        </div>
+      </div>
       <p class="section-label">Happy Customers</p>
-      <h2 class="section-title">What Our Clients Say</h2>
-      <p class="section-sub">Don't just take our word for it — here's what some of our wonderful clients have shared.</p>
-
-      <div class="reviews-grid">
-
-        <div class="review-card">
-          <div class="stars">★★★★★</div>
-          <p>Sam (golden retriever) has been attending Bayside Groomers for years and on a regular basis. He doesn't love having to attend but the crew have always looked after him and his grooms have always been on point. The staff are just the best with him.</p>
-          <div class="reviewer">
-            <div class="reviewer-avatar">D</div>
-            <div class="reviewer-info">
-              <strong>Donna Maher</strong>
-              <span>Google Review · 11 months ago</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="review-card">
-          <div class="stars">★★★★★</div>
-          <p>I took my dog, Zeddie to Bayside Dog Grooming Salon for a groom and a wash today and I'm really pleased. Everyone was friendly and attentive. They did a fantastic job, and my dog looks absolutely amazing!</p>
-          <div class="reviewer">
-            <div class="reviewer-avatar">S</div>
-            <div class="reviewer-info">
-              <strong>Snooki</strong>
-              <span>Google Review · 1 year ago</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="review-card">
-          <div class="stars">★★★★★</div>
-          <p>First time client today and my fluffball looks divine!! Very happy and the best groom I think he has ever had. I'll be back! Thank you 🙏</p>
-          <div class="reviewer">
-            <div class="reviewer-avatar">M</div>
-            <div class="reviewer-info">
-              <strong>The Meme King101</strong>
-              <span>Google Review · 1 year ago</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="review-card">
-          <div class="stars">★★★★★</div>
-          <p>Our pug has never been groomed so well. His nails were perfectly filed, his coat thoroughly washed. I didn't know that it was possible to get him so clean. We will definitely return. Thank you for doing such an amazing job.</p>
-          <div class="reviewer">
-            <div class="reviewer-avatar">M</div>
-            <div class="reviewer-info">
-              <strong>Marina Roytikh</strong>
-              <span>Google Review · 6 years ago</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="review-card">
-          <div class="stars">★★★★★</div>
-          <p>My doggie Sadie (Mini Schnauzer) has been a customer of Bayside Dog Grooming for over a year and we are extremely happy with the service provided by Vanessa and her staff. It's so hard to find a really good dog groomer — we have found our forever groomer!</p>
-          <div class="reviewer">
-            <div class="reviewer-avatar">J</div>
-            <div class="reviewer-info">
-              <strong>Jazz</strong>
-              <span>Google Review · 5 years ago</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="review-card">
-          <div class="stars">★★★★★</div>
-          <p>We love taking our dog here! The staff are friendly and professional and the dogs are able to have a bit of a play with each other while waiting their turns. My dog always comes out looking (and smelling) great and always with a cute bow tie on his collar.</p>
-          <div class="reviewer">
-            <div class="reviewer-avatar">G</div>
-            <div class="reviewer-info">
-              <strong>George Varghese</strong>
-              <span>Google Review · 5 years ago</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="review-card">
-          <div class="stars">★★★★★</div>
-          <p>They cut my dog (Cavoodle) exactly how I asked and she came home cut beautifully. The staff were very kind, considerate to her highly strung nature and genuinely seemed to love their work. Highly recommended and will be using their services going forward.</p>
-          <div class="reviewer">
-            <div class="reviewer-avatar">B</div>
-            <div class="reviewer-info">
-              <strong>Becanem</strong>
-              <span>Google Review · 10 years ago</span>
-            </div>
-          </div>
-        </div>
-
-      </div>
-
-      <p class="reviews-note">
-        See all reviews on
-        <a href="https://www.facebook.com/p/Bayside-Dog-Grooming-Salon-100063639123757/" target="_blank" rel="noopener">Facebook</a>
-        &amp;
-        <a href="https://bayside-dog-grooming-salon.wheree.com/" target="_blank" rel="noopener">Wheree</a>
-      </p>
+      <h2 class="section-title">What Our Clients<br /><em>Are Saying</em></h2>
+      <div class="divider"></div>
     </div>
-  </section>
 
-  <!-- ===== CONTACT ===== -->
-  <section class="contact-bg" id="contact">
-    <div class="section-inner contact-grid">
-      <div>
-        <p class="section-label">Get In Touch</p>
-        <h2 class="section-title">Book Your Dog's Appointment</h2>
-        <p class="section-sub">Ready to treat your pup? Reach out to us today to book a grooming session. We'd love to meet your furry family member!</p>
+    <div class="reviews-grid">
 
-        <div class="contact-details">
-          <div class="contact-item">
-            <div class="contact-icon">📍</div>
-            <div>
-              <strong>Location</strong>
-              <p>Bayside, Victoria, Australia</p>
-            </div>
-          </div>
-          <div class="contact-item">
-            <div class="contact-icon">📘</div>
-            <div>
-              <strong>Facebook</strong>
-              <p><a href="https://www.facebook.com/p/Bayside-Dog-Grooming-Salon-100063639123757/" target="_blank" rel="noopener" style="color:#7fd8d6;">Bayside Dog Grooming Salon</a></p>
-            </div>
-          </div>
-          <div class="contact-item">
-            <div class="contact-icon">🌐</div>
-            <div>
-              <strong>Directory Listing</strong>
-              <p><a href="https://bayside-dog-grooming-salon.wheree.com/" target="_blank" rel="noopener" style="color:#7fd8d6;">bayside-dog-grooming-salon.wheree.com</a></p>
-            </div>
-          </div>
-          <div class="contact-item">
-            <div class="contact-icon">🕐</div>
-            <div>
-              <strong>Hours</strong>
-              <p>Monday – Saturday: 9:00 am – 5:00 pm</p>
-            </div>
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"Sam (golden retriever) has been attending Bayside Groomers for years and on a regular basis. He doesn't love having to attend but the crew have always looked after him and his grooms have always been on point. The staff are just the best with him."</p>
+        <div class="review-author">
+          <div class="review-avatar">D</div>
+          <div>
+            <div class="review-name">Donna Maher</div>
+            <div class="review-date">11 months ago</div>
           </div>
         </div>
-
-        <a href="https://www.facebook.com/p/Bayside-Dog-Grooming-Salon-100063639123757/" target="_blank" rel="noopener" class="btn btn-secondary" style="background:rgba(255,255,255,.15);color:#fff;border:2px solid rgba(255,255,255,.35);">
-          Message Us on Facebook
-        </a>
+        <div class="review-google-icon"><span class="g-blue">G</span><span class="g-red">o</span><span class="g-yellow">o</span><span class="g-blue">g</span><span class="g-green">l</span><span class="g-red">e</span></div>
       </div>
 
-      <div class="map-embed">
-        <iframe
-          src="https://maps.google.com/maps?q=Bayside+Dog+Grooming+Salon+Victoria+Australia&output=embed"
-          allowfullscreen
-          loading="lazy"
-          referrerpolicy="no-referrer-when-downgrade"
-          title="Bayside Dog Grooming Salon location map"
-        ></iframe>
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"I took my dog, Zeddie to Bayside Dog Grooming Salon for a groom and a wash today and I'm really pleased. Everyone was friendly and attentive. They did a fantastic job, and my dog looks absolutely amazing!"</p>
+        <div class="review-author">
+          <div class="review-avatar">S</div>
+          <div>
+            <div class="review-name">Snooki</div>
+            <div class="review-date">1 year ago</div>
+          </div>
+        </div>
+        <div class="review-google-icon"><span class="g-blue">G</span><span class="g-red">o</span><span class="g-yellow">o</span><span class="g-blue">g</span><span class="g-green">l</span><span class="g-red">e</span></div>
       </div>
+
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"First time client today and my fluffball looks divine!! Very happy and the best groom I think he has ever had. I'll be back! Thank you 🙏"</p>
+        <div class="review-author">
+          <div class="review-avatar">M</div>
+          <div>
+            <div class="review-name">The Meme King101</div>
+            <div class="review-date">1 year ago</div>
+          </div>
+        </div>
+        <div class="review-google-icon"><span class="g-blue">G</span><span class="g-red">o</span><span class="g-yellow">o</span><span class="g-blue">g</span><span class="g-green">l</span><span class="g-red">e</span></div>
+      </div>
+
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"Our pug has never been groomed so well. His nails were perfectly filed, his coat thoroughly washed. I didn't know that it was possible to get him so clean. We will definitely return. Thank you for doing such an amazing job."</p>
+        <div class="review-author">
+          <div class="review-avatar">M</div>
+          <div>
+            <div class="review-name">Marina Roytikh</div>
+            <div class="review-date">6 years ago</div>
+          </div>
+        </div>
+        <div class="review-google-icon"><span class="g-blue">G</span><span class="g-red">o</span><span class="g-yellow">o</span><span class="g-blue">g</span><span class="g-green">l</span><span class="g-red">e</span></div>
+      </div>
+
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"My doggie Sadie (Mini Schnauzer) has been a customer of Bayside Dog Grooming for over a year and we are extremely happy with the service provided by Vanessa and her staff. It's so hard to find a really good dog groomer — we have found our forever groomer!"</p>
+        <div class="review-author">
+          <div class="review-avatar">J</div>
+          <div>
+            <div class="review-name">Jazz</div>
+            <div class="review-date">5 years ago</div>
+          </div>
+        </div>
+        <div class="review-google-icon"><span class="g-blue">G</span><span class="g-red">o</span><span class="g-yellow">o</span><span class="g-blue">g</span><span class="g-green">l</span><span class="g-red">e</span></div>
+      </div>
+
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"We love taking our dog here! The staff are friendly and professional and the dogs are able to have a bit of a play with each other while waiting their turns. My dog always comes out looking (and smelling) great and always with a cute bow tie on his collar."</p>
+        <div class="review-author">
+          <div class="review-avatar">G</div>
+          <div>
+            <div class="review-name">George Varghese</div>
+            <div class="review-date">5 years ago</div>
+          </div>
+        </div>
+        <div class="review-google-icon"><span class="g-blue">G</span><span class="g-red">o</span><span class="g-yellow">o</span><span class="g-blue">g</span><span class="g-green">l</span><span class="g-red">e</span></div>
+      </div>
+
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"They cut my dog (Cavoodle) exactly how I asked and she came home cut beautifully. The staff were very kind, considerate to her highly strung nature and genuinely seemed to love their work. Highly recommended and will be using their services going forward."</p>
+        <div class="review-author">
+          <div class="review-avatar">B</div>
+          <div>
+            <div class="review-name">Becanem</div>
+            <div class="review-date">10 years ago</div>
+          </div>
+        </div>
+        <div class="review-google-icon"><span class="g-blue">G</span><span class="g-red">o</span><span class="g-yellow">o</span><span class="g-blue">g</span><span class="g-green">l</span><span class="g-red">e</span></div>
+      </div>
+
     </div>
-  </section>
 
-  <!-- ===== FOOTER ===== -->
-  <footer>
-    <p>© 2024 Bayside Dog Grooming Salon · All rights reserved ·
+    <p class="reviews-note" style="margin-top:48px; font-size:13px; color:var(--text-light);">
+      See all reviews on
       <a href="https://www.facebook.com/p/Bayside-Dog-Grooming-Salon-100063639123757/" target="_blank" rel="noopener">Facebook</a>
+      &amp;
+      <a href="https://bayside-dog-grooming-salon.wheree.com/" target="_blank" rel="noopener">Wheree</a>
     </p>
-  </footer>
+  </div>
+</section>
+
+<!-- ── CONTACT ────────────────────────────────────────────────── -->
+<section id="contact">
+  <div class="section-inner">
+    <p class="section-label">Get in Touch</p>
+    <h2 class="section-title">Ready to Book?</h2>
+    <div class="divider"></div>
+    <p class="contact-sub">We'd love to meet your dog! Reach out via Facebook or our directory listing and we'll find the perfect grooming service for your pup.</p>
+
+    <div class="contact-methods">
+      <a href="https://www.facebook.com/p/Bayside-Dog-Grooming-Salon-100063639123757/" target="_blank" rel="noopener" class="contact-method">
+        <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+        Bayside Dog Grooming Salon
+      </a>
+      <a href="https://bayside-dog-grooming-salon.wheree.com/" target="_blank" rel="noopener" class="contact-method">
+        <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        Find Us on Wheree
+      </a>
+    </div>
+
+    <div class="contact-cta-group">
+      <a href="https://www.facebook.com/p/Bayside-Dog-Grooming-Salon-100063639123757/" target="_blank" rel="noopener" class="btn-gold">Message on Facebook</a>
+      <a href="https://bayside-dog-grooming-salon.wheree.com/" target="_blank" rel="noopener" class="btn-outline-white">View Directory Listing</a>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ─────────────────────────────────────────────────── -->
+<footer>
+  <div class="footer-wordmark">
+    <span class="footer-wordmark-main">Bayside Dog Grooming Salon</span>
+    <span class="footer-wordmark-sub">Bayside, Melbourne</span>
+  </div>
+  <p class="footer-text">© 2024 Bayside Dog Grooming Salon · All rights reserved</p>
+  <div class="footer-links">
+    <a href="https://www.facebook.com/p/Bayside-Dog-Grooming-Salon-100063639123757/" target="_blank" rel="noopener">Facebook</a>
+    <a href="https://bayside-dog-grooming-salon.wheree.com/" target="_blank" rel="noopener">Wheree</a>
+  </div>
+</footer>
+
+<script>
+  const hamburger = document.getElementById('hamburger');
+  const navLinks  = document.getElementById('navLinks');
+  hamburger.addEventListener('click', () => navLinks.classList.toggle('open'));
+  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+</script>
 
 </body>
 </html>
