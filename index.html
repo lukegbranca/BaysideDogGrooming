@@ -102,20 +102,18 @@
       text-decoration: none;
     }
 
-    .nav-logo img { height: 48px; width: auto; flex-shrink: 0; }
+    .nav-logo img { display: none; }
 
     .nav-brand {
       display: flex;
       flex-direction: column;
       justify-content: center;
-      gap: 2px;
-      border-left: 1px solid rgba(118,196,66,0.3);
-      padding-left: 14px;
+      gap: 3px;
     }
 
     .nav-brand-name {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 18px;
+      font-size: 20px;
       font-weight: 500;
       color: var(--white);
       letter-spacing: 1px;
@@ -455,11 +453,12 @@
     }
 
     .hero-photo-label span {
-      background: var(--green);
-      color: var(--dark);
-      padding: 3px 10px;
-      border-radius: 2px;
+      background: rgba(0,0,0,0.82);
+      color: var(--white);
+      padding: 4px 12px;
+      border-radius: 3px;
       font-size: 9px;
+      letter-spacing: 2.5px;
     }
 
     /* ── TRUST BAR ───────────────────────────────────────────── */
@@ -1148,6 +1147,40 @@
       transform: translateY(-2px);
     }
 
+    /* ── MAP ────────────────────────────────────────────────── */
+    .map-section { background: var(--white); }
+
+    .map-header {
+      padding: 56px 48px 36px;
+      border-bottom: 1px solid rgba(118,196,66,0.15);
+    }
+
+    .map-header-inner { max-width: 1160px; margin: 0 auto; }
+
+    .map-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(28px, 3vw, 42px);
+      font-weight: 500;
+      color: var(--dark);
+      line-height: 1.15;
+      margin-bottom: 8px;
+    }
+
+    .map-address {
+      font-size: 13px;
+      font-weight: 400;
+      color: var(--grey);
+      letter-spacing: 0.5px;
+    }
+
+    .map-embed {
+      display: block;
+      width: 100%;
+      box-shadow: inset 0 4px 16px rgba(0,0,0,0.06);
+    }
+
+    .map-embed iframe { display: block; }
+
     /* ── FOOTER ──────────────────────────────────────────────── */
     footer {
       background: var(--dark);
@@ -1183,7 +1216,8 @@
 
     @media (max-width: 900px) {
       nav { padding: 0 20px; }
-      .nav-brand { display: none; }
+      .nav-brand-name { font-size: 15px; }
+      .nav-brand-sub { display: none; }
       .nav-links { display: none; }
       .nav-links.open {
         display: flex; flex-direction: column;
@@ -1239,10 +1273,9 @@
 <!-- ── NAV ──────────────────────────────────────────────────── -->
 <nav>
   <a href="#home" class="nav-logo">
-    <img src="images/logo.png" alt="Bayside Dog Grooming Salon" />
     <div class="nav-brand">
-      <span class="nav-brand-name">Bayside Dog Grooming</span>
-      <span class="nav-brand-sub">Professional Grooming Salon · Bayside, Melbourne</span>
+      <span class="nav-brand-name">Bayside Dog Grooming Salon</span>
+      <span class="nav-brand-sub">Professional Grooming · Bayside, Melbourne</span>
     </div>
   </a>
   <ul class="nav-links" id="navLinks">
@@ -1268,7 +1301,7 @@
 
     <p class="hero-eyebrow">Bayside, Melbourne</p>
     <h1 class="hero-title">Your Dog Deserves<br /><em>the Very Best</em></h1>
-    <p class="hero-sub">Professional grooming for every breed — trusted by Bayside families for years.<br />Every dog leaves looking and feeling absolutely amazing.</p>
+    <p class="hero-sub">Professional grooming for every breed, trusted by Bayside families for years.<br />Every dog leaves looking and feeling absolutely amazing.</p>
 
     <div class="hero-buttons">
       <a href="#contact" class="btn-green">Book an Appointment</a>
@@ -1328,7 +1361,7 @@
       <p class="section-label">What We Offer</p>
       <h2 class="section-title">Tailored Grooming for <em>Every Dog</em></h2>
       <div class="divider"></div>
-      <p class="section-sub">From a quick freshen-up to a full pamper session — grooming services to suit every breed and every budget.</p>
+      <p class="section-sub">From a quick freshen-up to a full pamper session, with grooming services to suit every breed and every budget.</p>
     </div>
     <div class="services-grid">
 
@@ -1374,7 +1407,7 @@
           </svg>
         </div>
         <h3>Puppy's First Groom</h3>
-        <p>A gentle introduction to the salon — designed to build confidence and make grooming a positive routine from day one.</p>
+        <p>A gentle introduction to the salon, designed to build confidence and make grooming a positive routine from day one.</p>
       </div>
 
       <div class="service-card">
@@ -1385,7 +1418,7 @@
           </svg>
         </div>
         <h3>De-shedding Treatment</h3>
-        <p>Specialised treatment to reduce shedding — perfect for double-coated breeds like golden retrievers and huskies.</p>
+        <p>Specialised treatment to reduce shedding, perfect for double-coated breeds like golden retrievers and huskies.</p>
       </div>
 
       <div class="service-card">
@@ -1410,10 +1443,6 @@
 
       <div class="about-image-wrap">
         <img src="images/about-salon.webp" alt="Golden retriever freshly groomed at Bayside Dog Grooming Salon" />
-        <div class="about-badge">
-          <span class="num">Bayside Dog Grooming</span>
-          <span class="lbl">Salon</span>
-        </div>
       </div>
 
       <div class="about-content">
@@ -1421,10 +1450,10 @@
         <h2 class="section-title">A Salon Built on <em>Love &amp; Care</em></h2>
         <div class="divider"></div>
         <p class="section-sub" style="max-width:100%;">
-          At Bayside Dog Grooming Salon we treat every dog like our own. Our experienced team, led by Vanessa and her dedicated staff, is passionate about making your pet look and feel their absolute best — in a warm, calm and welcoming environment.
+          At Bayside Dog Grooming Salon we treat every dog like our own. Our experienced team, led by Vanessa and her dedicated staff, is passionate about making your pet look and feel their absolute best in a warm, calm and welcoming environment.
         </p>
         <p class="section-sub" style="max-width:100%; margin-top: 18px;">
-          Dogs are able to have a bit of a play with each other while waiting their turns, keeping them relaxed and happy. From golden retrievers and schnauzers to pugs and cavoodles — every breed is welcome and every dog is given the genuine care and attention they deserve.
+          Dogs are able to have a bit of a play with each other while waiting their turns, keeping them relaxed and happy. From golden retrievers and schnauzers to pugs and cavoodles, every breed is welcome and every dog is given the genuine care and attention they deserve.
         </p>
         <div class="about-stats">
           <div class="stat">
@@ -1452,7 +1481,7 @@
     <p class="section-label">Fresh From the Salon</p>
     <h2 class="section-title">Happy Dogs, <em>Happy Lives</em></h2>
     <div class="divider"></div>
-    <p class="section-sub">Every dog that comes through our doors leaves looking — and feeling — absolutely amazing.</p>
+    <p class="section-sub">Every dog that comes through our doors leaves looking and feeling absolutely amazing.</p>
   </div>
   <div class="gallery-grid">
     <div class="gallery-item wide">
@@ -1545,7 +1574,7 @@
 
       <div class="review-card">
         <div class="review-stars">★★★★★</div>
-        <p class="review-text">"My doggie Sadie (Mini Schnauzer) has been a customer of Bayside Dog Grooming for over a year and we are extremely happy with the service provided by Vanessa and her staff. It's so hard to find a really good dog groomer — we have found our forever groomer!"</p>
+        <p class="review-text">"My doggie Sadie (Mini Schnauzer) has been a customer of Bayside Dog Grooming for over a year and we are extremely happy with the service provided by Vanessa and her staff. It's so hard to find a really good dog groomer. We have found our forever groomer!"</p>
         <div class="review-author">
           <div class="review-avatar">J</div>
           <div>
@@ -1558,7 +1587,7 @@
 
       <div class="review-card">
         <div class="review-stars">★★★★★</div>
-        <p class="review-text">"We love taking our dog here! The staff are friendly and professional and the dogs are able to have a bit of a play with each other while waiting their turns. My dog always comes out looking and smelling great — always with a cute bow tie on his collar."</p>
+        <p class="review-text">"We love taking our dog here! The staff are friendly and professional and the dogs are able to have a bit of a play with each other while waiting their turns. My dog always comes out looking and smelling great, always with a cute bow tie on his collar."</p>
         <div class="review-author">
           <div class="review-avatar">G</div>
           <div>
@@ -1619,6 +1648,29 @@
     </div>
   </div>
 </section>
+
+<!-- ── MAP ───────────────────────────────────────────────────── -->
+<div class="map-section">
+  <div class="map-header">
+    <div class="map-header-inner">
+      <p class="section-label">Find Us</p>
+      <h2 class="map-title">Visit the Salon</h2>
+      <p class="map-address">Bayside Dog Grooming Salon · Bayside, Melbourne, VIC</p>
+    </div>
+  </div>
+  <div class="map-embed">
+    <iframe
+      src="https://maps.google.com/maps?q=Bayside+Dog+Grooming+Salon+Melbourne+Victoria+Australia&output=embed"
+      width="100%"
+      height="420"
+      style="border:0;"
+      allowfullscreen=""
+      loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade"
+      title="Bayside Dog Grooming Salon location">
+    </iframe>
+  </div>
+</div>
 
 <!-- ── FOOTER ─────────────────────────────────────────────────── -->
 <footer>
