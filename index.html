@@ -7,30 +7,51 @@
   <meta name="description" content="Bayside Dog Grooming Salon – professional, caring grooming services for your beloved dog. Trusted by the Bayside community." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,600&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --black:     #000000;
-      --black-2:   #0d0d0d;
-      --black-3:   #141414;
-      --black-4:   #1c1c1c;
-      --green:     #76c442;
-      --green-dk:  #5faa2e;
-      --green-lt:  #a8e070;
-      --white:     #ffffff;
-      --off-white: #f0f0f0;
-      --grey:      #888888;
-      --grey-lt:   #bbbbbb;
+      --green:      #76c442;
+      --green-dk:   #5aa32a;
+      --green-xdk:  #3d7219;
+      --green-lt:   #c2e89a;
+      --green-xlt:  #eaf4df;
+      --green-tint: #f3faf0;
+      --dark:       #1a2614;
+      --dark-2:     #243319;
+      --mid:        #4a6038;
+      --text:       #2c3a22;
+      --text-lt:    #5a6e50;
+      --grey:       #8a9080;
+      --grey-lt:    #b8c4b0;
+      --white:      #ffffff;
+      --cream:      #fafcf8;
+      --cream-2:    #f2f7ed;
+      --cream-3:    #e8f1e0;
+      --shadow-sm:  0 2px 8px rgba(40,80,20,0.08);
+      --shadow-md:  0 4px 20px rgba(40,80,20,0.12), 0 1px 4px rgba(0,0,0,0.06);
+      --shadow-lg:  0 8px 40px rgba(40,80,20,0.14), 0 2px 8px rgba(0,0,0,0.08), 0 32px 64px rgba(40,80,20,0.08);
+      --shadow-xl:  0 20px 60px rgba(40,80,20,0.18), 0 4px 16px rgba(0,0,0,0.1), 0 1px 3px rgba(0,0,0,0.06);
+    }
+
+    /* ── GRAIN TEXTURE OVERLAY ─────────────────────────────── */
+    .grain::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23g)' opacity='1'/%3E%3C/svg%3E");
+      opacity: 0.035;
+      pointer-events: none;
+      z-index: 1;
     }
 
     html { scroll-behavior: smooth; }
 
     body {
       font-family: 'Montserrat', sans-serif;
-      color: var(--white);
-      background: var(--black);
+      color: var(--text);
+      background: var(--cream);
       overflow-x: hidden;
     }
 
@@ -45,18 +66,36 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 0 48px;
+      padding: 0 52px;
       height: 72px;
-      background: rgba(0, 0, 0, 0.95);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid rgba(118, 196, 66, 0.25);
+      background: var(--dark);
+      box-shadow:
+        0 1px 0 rgba(118,196,66,0.3),
+        0 4px 24px rgba(0,0,0,0.35),
+        0 1px 3px rgba(0,0,0,0.2);
     }
 
-    .nav-logo img {
-      height: 48px;
-      width: auto;
-      display: block;
+    /* animated green underline on nav */
+    nav::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg,
+        transparent 0%,
+        rgba(118,196,66,0.4) 20%,
+        rgba(118,196,66,0.9) 50%,
+        rgba(118,196,66,0.4) 80%,
+        transparent 100%);
+      animation: navShimmer 4s ease-in-out infinite;
     }
+
+    @keyframes navShimmer {
+      0%, 100% { opacity: 0.5; }
+      50%       { opacity: 1; }
+    }
+
+    .nav-logo img { height: 48px; width: auto; }
 
     .nav-links {
       display: flex;
@@ -66,11 +105,11 @@
     }
 
     .nav-links a {
-      font-size: 11px;
-      font-weight: 500;
-      letter-spacing: 2px;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 2.5px;
       text-transform: uppercase;
-      color: rgba(255,255,255,0.65);
+      color: rgba(255,255,255,0.6);
       transition: color 0.2s;
       position: relative;
       padding-bottom: 3px;
@@ -82,24 +121,29 @@
       bottom: 0; left: 0;
       width: 0; height: 1px;
       background: var(--green);
-      transition: width 0.25s;
+      transition: width 0.25s ease;
     }
 
-    .nav-links a:hover { color: var(--white); }
-    .nav-links a:hover::after { width: 100%; }
+    .nav-links a:hover            { color: var(--white); }
+    .nav-links a:hover::after     { width: 100%; }
 
     .nav-cta {
       background: var(--green) !important;
-      color: var(--black) !important;
-      padding: 9px 22px !important;
-      border-radius: 2px;
+      color: var(--dark) !important;
+      padding: 9px 24px !important;
+      border-radius: 3px;
       font-weight: 700 !important;
-      letter-spacing: 1.5px !important;
-      transition: background 0.2s !important;
+      box-shadow: 0 2px 12px rgba(118,196,66,0.45) !important;
+      transition: background 0.2s, box-shadow 0.2s, transform 0.15s !important;
     }
 
     .nav-cta::after { display: none !important; }
-    .nav-cta:hover  { background: var(--green-dk) !important; color: var(--white) !important; }
+
+    .nav-cta:hover {
+      background: var(--green-dk) !important;
+      box-shadow: 0 4px 20px rgba(118,196,66,0.6) !important;
+      transform: translateY(-1px);
+    }
 
     .hamburger {
       display: none;
@@ -121,68 +165,111 @@
     /* ── HERO ────────────────────────────────────────────────── */
     .hero {
       padding-top: 72px;
-      background: var(--black);
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
+      background: var(--cream);
+      position: relative;
+      overflow: hidden;
     }
 
-    .hero-top {
+    /* Hero background mesh — subtle radial lighting */
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 70% 60% at 20% 30%, rgba(118,196,66,0.1) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 50% at 80% 20%, rgba(118,196,66,0.07) 0%, transparent 55%),
+        radial-gradient(ellipse 80% 40% at 50% 100%, rgba(90,163,42,0.06) 0%, transparent 55%);
+      pointer-events: none;
+    }
+
+    /* dot grid texture */
+    .hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(circle, rgba(118,196,66,0.18) 1px, transparent 1px);
+      background-size: 28px 28px;
+      opacity: 0.5;
+      pointer-events: none;
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 2;
       text-align: center;
-      padding: 56px 24px 40px;
+      padding: 60px 40px 0;
+      max-width: 860px;
+      margin: 0 auto;
     }
 
     .hero-logo {
-      height: 120px;
+      height: 110px;
       width: auto;
-      margin: 0 auto 32px;
+      margin: 0 auto 10px;
+      /* subtle drop shadow on the logo */
+      filter: drop-shadow(0 4px 16px rgba(0,0,0,0.18));
     }
 
-    .hero-tagline {
-      font-size: 11px;
-      font-weight: 500;
-      letter-spacing: 5px;
-      text-transform: uppercase;
-      color: var(--green);
-      margin-bottom: 16px;
+    /* decorative green rule under logo */
+    .hero-rule {
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 16px;
+      gap: 14px;
+      margin: 8px 0 24px;
     }
 
-    .hero-tagline::before,
-    .hero-tagline::after {
+    .hero-rule::before,
+    .hero-rule::after {
       content: '';
       display: block;
-      width: 48px; height: 1px;
+      height: 1px;
+      width: 70px;
+      background: linear-gradient(90deg, transparent, var(--green));
+    }
+
+    .hero-rule::after {
+      background: linear-gradient(90deg, var(--green), transparent);
+    }
+
+    .hero-rule-dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
       background: var(--green);
-      opacity: 0.5;
+      box-shadow: 0 0 8px rgba(118,196,66,0.6);
+    }
+
+    .hero-eyebrow {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--green-dk);
+      margin-bottom: 14px;
     }
 
     .hero-title {
       font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(38px, 5vw, 64px);
-      font-weight: 400;
-      line-height: 1.15;
-      color: var(--white);
-      margin-bottom: 20px;
+      font-size: clamp(40px, 5.5vw, 68px);
+      font-weight: 500;
+      line-height: 1.1;
+      color: var(--dark);
+      margin-bottom: 18px;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.06);
     }
 
     .hero-title em {
       font-style: italic;
-      color: var(--green-lt);
+      color: var(--green-dk);
     }
 
     .hero-sub {
-      font-size: 13px;
+      font-size: 14px;
       font-weight: 300;
-      letter-spacing: 1px;
-      color: var(--grey-lt);
-      margin-bottom: 36px;
-      line-height: 1.8;
+      color: var(--text-lt);
+      line-height: 1.85;
+      margin-bottom: 34px;
+      letter-spacing: 0.3px;
     }
 
     .hero-buttons {
@@ -190,275 +277,455 @@
       gap: 14px;
       justify-content: center;
       flex-wrap: wrap;
-      margin-bottom: 56px;
+      margin-bottom: 60px;
     }
 
     .btn-green {
       display: inline-block;
-      background: var(--green);
-      color: var(--black);
-      padding: 14px 40px;
+      background: linear-gradient(135deg, var(--green) 0%, var(--green-dk) 100%);
+      color: var(--white);
+      padding: 15px 42px;
       font-size: 11px;
       font-weight: 700;
       letter-spacing: 2px;
       text-transform: uppercase;
-      border-radius: 2px;
-      transition: background 0.2s, transform 0.2s;
+      border-radius: 3px;
+      box-shadow:
+        0 2px 8px rgba(118,196,66,0.35),
+        0 6px 20px rgba(90,163,42,0.25),
+        inset 0 1px 0 rgba(255,255,255,0.25);
+      transition: transform 0.2s, box-shadow 0.2s;
     }
 
     .btn-green:hover {
-      background: var(--green-dk);
-      color: var(--white);
-      transform: translateY(-2px);
+      transform: translateY(-3px);
+      box-shadow:
+        0 4px 16px rgba(118,196,66,0.5),
+        0 10px 30px rgba(90,163,42,0.3),
+        inset 0 1px 0 rgba(255,255,255,0.25);
     }
 
-    .btn-outline-green {
+    .btn-outline {
       display: inline-block;
-      background: transparent;
-      color: var(--green);
-      padding: 14px 40px;
+      background: var(--white);
+      color: var(--dark);
+      padding: 15px 42px;
       font-size: 11px;
       font-weight: 600;
       letter-spacing: 2px;
       text-transform: uppercase;
-      border: 1px solid var(--green);
-      border-radius: 2px;
-      transition: background 0.2s, color 0.2s, transform 0.2s;
+      border-radius: 3px;
+      border: 1.5px solid var(--green-lt);
+      box-shadow: var(--shadow-sm), inset 0 1px 0 rgba(255,255,255,0.8);
+      transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
     }
 
-    .btn-outline-green:hover {
-      background: var(--green);
-      color: var(--black);
-      transform: translateY(-2px);
+    .btn-outline:hover {
+      transform: translateY(-3px);
+      border-color: var(--green);
+      box-shadow: var(--shadow-md);
     }
 
-    /* 3-photo hero panels */
+    /* ── 3 HERO PHOTO CARDS ──────────────────────────────────── */
     .hero-photos {
-      width: 100%;
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 3px;
-    }
-
-    .hero-photo {
       position: relative;
-      aspect-ratio: 3/4;
+      z-index: 2;
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+      gap: 0;
+      padding: 0 24px;
+      /* let cards overflow slightly for stagger */
+    }
+
+    .hero-photo-card {
+      position: relative;
+      flex: 1;
+      max-width: 380px;
+      border-radius: 16px 16px 0 0;
       overflow: hidden;
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
     }
 
-    .hero-photo img {
+    /* stagger: left tilts left, right tilts right, centre is tallest */
+    .hero-photo-card:nth-child(1) {
+      transform: rotate(-2.5deg) translateX(24px) translateY(16px);
+      z-index: 1;
+      box-shadow:
+        -4px 0 20px rgba(0,0,0,0.08),
+        0 8px 32px rgba(40,80,20,0.14),
+        0 2px 8px rgba(0,0,0,0.08),
+        0 0 0 3px var(--white),
+        0 0 0 4px var(--green-lt);
+    }
+
+    .hero-photo-card:nth-child(2) {
+      z-index: 3;
+      transform: translateY(0);
+      box-shadow:
+        0 12px 48px rgba(40,80,20,0.22),
+        0 4px 16px rgba(0,0,0,0.12),
+        0 1px 4px rgba(0,0,0,0.08),
+        0 0 0 3px var(--white),
+        0 0 0 5px var(--green);
+    }
+
+    .hero-photo-card:nth-child(3) {
+      transform: rotate(2.5deg) translateX(-24px) translateY(16px);
+      z-index: 1;
+      box-shadow:
+        4px 0 20px rgba(0,0,0,0.08),
+        0 8px 32px rgba(40,80,20,0.14),
+        0 2px 8px rgba(0,0,0,0.08),
+        0 0 0 3px var(--white),
+        0 0 0 4px var(--green-lt);
+    }
+
+    .hero-photo-card:hover {
+      z-index: 4;
+      transform: rotate(0deg) translateY(-12px) !important;
+      box-shadow:
+        0 20px 60px rgba(40,80,20,0.25),
+        0 6px 24px rgba(0,0,0,0.14),
+        0 0 0 3px var(--white),
+        0 0 0 5px var(--green) !important;
+    }
+
+    .hero-photo-card img {
+      display: block;
       width: 100%;
-      height: 100%;
+      aspect-ratio: 3/4;
       object-fit: cover;
-      transition: transform 0.6s ease, filter 0.4s;
-      filter: brightness(0.85);
+      object-position: center 15%;
     }
 
-    .hero-photo:hover img {
-      transform: scale(1.04);
-      filter: brightness(1);
-    }
+    /* specific positioning per photo */
+    .hero-photo-card:nth-child(1) img { object-position: center 12%; } /* cavoodle on grass */
+    .hero-photo-card:nth-child(2) img { object-position: center 18%; } /* dachshund */
+    .hero-photo-card:nth-child(3) img { object-position: center 20%; } /* golden retriever */
 
-    .hero-photo-overlay {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to top, rgba(0,0,0,0.5) 0%, transparent 50%);
-      pointer-events: none;
-    }
-
+    /* bottom label strip */
     .hero-photo-label {
       position: absolute;
-      bottom: 20px; left: 20px;
+      bottom: 0; left: 0; right: 0;
+      padding: 32px 16px 14px;
+      background: linear-gradient(to top, rgba(20,38,10,0.75) 0%, transparent 100%);
       font-size: 10px;
-      font-weight: 600;
+      font-weight: 700;
       letter-spacing: 3px;
       text-transform: uppercase;
-      color: var(--green);
-      background: rgba(0,0,0,0.6);
-      padding: 5px 12px;
-      border-left: 2px solid var(--green);
+      color: var(--white);
+      text-align: center;
+    }
+
+    .hero-photo-label span {
+      background: var(--green);
+      color: var(--dark);
+      padding: 3px 10px;
+      border-radius: 2px;
+      font-size: 9px;
     }
 
     /* ── TRUST BAR ───────────────────────────────────────────── */
     .trust-bar {
-      background: var(--green);
-      padding: 16px 48px;
+      background: var(--dark);
+      /* diagonal stripe texture */
+      background-image:
+        linear-gradient(var(--dark), var(--dark)),
+        repeating-linear-gradient(
+          55deg,
+          transparent,
+          transparent 12px,
+          rgba(118,196,66,0.06) 12px,
+          rgba(118,196,66,0.06) 13px
+        );
+      border-top: 2px solid var(--green);
+      border-bottom: 1px solid rgba(118,196,66,0.2);
+      padding: 20px 48px;
       display: flex;
       justify-content: center;
       align-items: center;
       gap: 48px;
       flex-wrap: wrap;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.15), inset 0 -1px 0 rgba(118,196,66,0.15);
     }
 
     .trust-item {
       display: flex;
       align-items: center;
       gap: 10px;
-      color: var(--black);
-      font-size: 11px;
+      color: rgba(255,255,255,0.75);
+      font-size: 10px;
       font-weight: 600;
-      letter-spacing: 1.5px;
+      letter-spacing: 2px;
       text-transform: uppercase;
     }
 
-    .trust-item svg { flex-shrink: 0; }
+    .trust-item svg { color: var(--green); flex-shrink: 0; }
 
-    /* ── SECTIONS ────────────────────────────────────────────── */
-    section { padding: 96px 48px; }
+    .trust-sep {
+      width: 1px;
+      height: 24px;
+      background: rgba(118,196,66,0.25);
+    }
 
-    .section-inner { max-width: 1140px; margin: 0 auto; }
+    /* ── SECTION SHARED ──────────────────────────────────────── */
+    section { padding: 100px 48px; }
+
+    .section-inner { max-width: 1160px; margin: 0 auto; }
 
     .section-label {
       font-size: 10px;
-      font-weight: 600;
+      font-weight: 700;
       letter-spacing: 5px;
       text-transform: uppercase;
-      color: var(--green);
-      margin-bottom: 16px;
+      color: var(--green-dk);
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .section-label::before {
+      content: '';
+      display: block;
+      width: 28px;
+      height: 2px;
+      background: var(--green);
+      border-radius: 1px;
     }
 
     .section-title {
       font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(34px, 4vw, 52px);
-      font-weight: 400;
-      color: var(--white);
+      font-size: clamp(34px, 4vw, 54px);
+      font-weight: 500;
+      color: var(--dark);
       line-height: 1.15;
-      margin-bottom: 20px;
+      margin-bottom: 18px;
+      text-shadow: 0 1px 2px rgba(0,0,0,0.05);
     }
 
-    .section-title em { font-style: italic; color: var(--green-lt); }
+    .section-title em { font-style: italic; color: var(--green-dk); }
 
     .section-sub {
       font-size: 14px;
       font-weight: 300;
-      color: var(--grey-lt);
-      line-height: 1.9;
+      color: var(--text-lt);
+      line-height: 1.95;
       max-width: 560px;
     }
 
     .divider {
-      width: 56px; height: 2px;
-      background: var(--green);
-      margin: 24px 0;
-      opacity: 0.7;
+      width: 56px;
+      height: 3px;
+      margin: 22px 0;
+      border-radius: 2px;
+      background: linear-gradient(90deg, var(--green), var(--green-lt));
+      box-shadow: 0 1px 6px rgba(118,196,66,0.4);
     }
 
     /* ── SERVICES ────────────────────────────────────────────── */
-    #services { background: var(--black-2); }
+    #services {
+      position: relative;
+      background: var(--cream-2);
+      /* crosshatch dot texture */
+      background-image:
+        radial-gradient(circle, rgba(90,163,42,0.15) 1px, transparent 1px),
+        radial-gradient(circle, rgba(90,163,42,0.08) 1px, transparent 1px);
+      background-size: 32px 32px, 16px 16px;
+      background-position: 0 0, 8px 8px;
+    }
+
+    /* top angled divider */
+    #services::before {
+      content: '';
+      position: absolute;
+      top: -1px; left: 0; right: 0;
+      height: 60px;
+      background: var(--cream);
+      clip-path: polygon(0 0, 100% 0, 100% 0, 0 100%);
+    }
 
     .services-header { text-align: center; margin-bottom: 64px; }
+    .services-header .section-label { justify-content: center; }
+    .services-header .section-label::before { display: none; }
+    .services-header .divider { margin: 22px auto; }
     .services-header .section-sub { margin: 0 auto; }
-    .services-header .divider { margin: 24px auto; }
 
     .services-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 2px;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
     }
 
     .service-card {
-      background: var(--black-3);
-      padding: 44px 32px;
+      background: var(--white);
+      border-radius: 12px;
+      padding: 40px 32px 36px;
       text-align: center;
       position: relative;
       overflow: hidden;
-      transition: background 0.3s, transform 0.3s;
-      border-top: 2px solid transparent;
+      box-shadow:
+        0 1px 2px rgba(0,0,0,0.04),
+        0 4px 16px rgba(40,80,20,0.08),
+        0 12px 32px rgba(40,80,20,0.06);
+      border: 1px solid rgba(118,196,66,0.12);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    /* top highlight bar */
+    .service-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--green-lt), var(--green), var(--green-lt));
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    /* inset card depth shadow at bottom */
+    .service-card::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 60px;
+      background: linear-gradient(to top, rgba(40,80,20,0.025), transparent);
+      pointer-events: none;
     }
 
     .service-card:hover {
-      background: var(--black-4);
-      border-top-color: var(--green);
-      transform: translateY(-4px);
+      transform: translateY(-6px);
+      box-shadow:
+        0 2px 4px rgba(0,0,0,0.04),
+        0 8px 28px rgba(40,80,20,0.14),
+        0 24px 56px rgba(40,80,20,0.1);
     }
 
+    .service-card:hover::before { opacity: 1; }
+
     .service-icon {
-      width: 60px; height: 60px;
-      margin: 0 auto 22px;
-      background: rgba(118,196,66,0.1);
+      width: 68px; height: 68px;
+      margin: 0 auto 24px;
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      border: 1px solid rgba(118,196,66,0.3);
-      transition: background 0.3s, border-color 0.3s;
+      position: relative;
+      /* layered icon background */
+      background: radial-gradient(circle at 35% 35%, var(--green-xlt), var(--cream-3));
+      box-shadow:
+        0 2px 8px rgba(90,163,42,0.2),
+        inset 0 1px 2px rgba(255,255,255,0.9),
+        inset 0 -1px 2px rgba(90,163,42,0.15);
+      border: 1px solid rgba(118,196,66,0.25);
     }
 
-    .service-card:hover .service-icon {
-      background: rgba(118,196,66,0.2);
-      border-color: var(--green);
-    }
-
-    .service-icon svg { color: var(--green); }
+    .service-icon svg { color: var(--green-dk); }
 
     .service-card h3 {
       font-family: 'Cormorant Garamond', serif;
       font-size: 22px;
       font-weight: 600;
-      color: var(--white);
+      color: var(--dark);
       margin-bottom: 12px;
     }
 
     .service-card p {
       font-size: 13px;
-      color: var(--grey-lt);
-      line-height: 1.8;
+      color: var(--text-lt);
+      line-height: 1.85;
       font-weight: 300;
     }
 
     /* ── ABOUT ───────────────────────────────────────────────── */
-    #about { background: var(--black); }
+    #about {
+      background: var(--white);
+      position: relative;
+    }
+
+    #about::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23g)' opacity='1'/%3E%3C/svg%3E");
+      opacity: 0.025;
+      pointer-events: none;
+    }
 
     .about-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 72px;
+      gap: 80px;
       align-items: center;
     }
 
-    .about-image-wrap { position: relative; }
+    .about-image-wrap {
+      position: relative;
+      padding: 16px 16px 0 0; /* room for the shadow frame offset */
+    }
+
+    /* decorative offset frame behind photo */
+    .about-image-wrap::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 16px; right: -16px; bottom: -16px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, var(--green-xlt), var(--cream-3));
+      border: 1px solid rgba(118,196,66,0.3);
+    }
 
     .about-image-wrap img {
+      position: relative;
+      z-index: 1;
       width: 100%;
       height: 520px;
       object-fit: cover;
-      border-radius: 2px;
+      object-position: center 20%;
+      border-radius: 12px;
       display: block;
-      border: 1px solid rgba(118,196,66,0.2);
+      box-shadow: var(--shadow-xl);
+      border: 3px solid var(--white);
     }
 
     .about-badge {
       position: absolute;
-      bottom: -18px; right: -18px;
-      background: var(--green);
-      color: var(--black);
-      width: 110px; height: 110px;
+      bottom: 8px; right: -8px;
+      z-index: 2;
+      background: linear-gradient(135deg, var(--green) 0%, var(--green-dk) 100%);
+      color: var(--white);
+      width: 114px; height: 114px;
       border-radius: 50%;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       text-align: center;
-      font-weight: 700;
+      box-shadow:
+        0 4px 20px rgba(90,163,42,0.45),
+        0 1px 4px rgba(0,0,0,0.15),
+        inset 0 1px 0 rgba(255,255,255,0.25);
+      border: 3px solid var(--white);
     }
 
     .about-badge .num {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 30px;
+      font-size: 28px;
       font-weight: 600;
       line-height: 1;
     }
 
     .about-badge .lbl {
-      font-size: 9px;
+      font-size: 8px;
       letter-spacing: 2px;
       text-transform: uppercase;
       font-family: 'Montserrat', sans-serif;
-      font-weight: 600;
-      margin-top: 3px;
+      font-weight: 700;
+      margin-top: 2px;
+      opacity: 0.85;
     }
 
-    .about-content { padding: 16px 0; }
+    .about-content { padding: 8px 0; position: relative; z-index: 1; }
 
     .about-stats {
       display: grid;
@@ -466,78 +733,142 @@
       gap: 20px;
       margin-top: 40px;
       padding-top: 36px;
-      border-top: 1px solid rgba(255,255,255,0.08);
+      border-top: 1px solid rgba(90,163,42,0.15);
     }
 
-    .stat { text-align: center; }
+    .stat {
+      text-align: center;
+      padding: 16px 10px;
+      background: var(--green-tint);
+      border-radius: 8px;
+      border: 1px solid rgba(118,196,66,0.18);
+      box-shadow: inset 0 1px 2px rgba(255,255,255,0.8), 0 2px 6px rgba(90,163,42,0.06);
+    }
 
     .stat-number {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 40px;
-      font-weight: 400;
-      color: var(--green);
+      font-size: 38px;
+      font-weight: 500;
+      color: var(--green-dk);
       line-height: 1;
     }
 
     .stat-label {
-      font-size: 10px;
+      font-size: 9px;
       letter-spacing: 1.5px;
       text-transform: uppercase;
       color: var(--grey);
       margin-top: 6px;
-      font-weight: 500;
+      font-weight: 600;
     }
 
     /* ── GALLERY ─────────────────────────────────────────────── */
-    #gallery { background: var(--black-2); padding-bottom: 0; }
+    #gallery {
+      background: var(--dark);
+      padding: 100px 48px 0;
+      position: relative;
+      overflow: hidden;
+    }
 
-    .gallery-header { margin-bottom: 48px; }
+    /* radial glow accents in dark gallery */
+    #gallery::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 60% 50% at 15% 50%, rgba(118,196,66,0.12) 0%, transparent 55%),
+        radial-gradient(ellipse 50% 40% at 85% 30%, rgba(118,196,66,0.08) 0%, transparent 50%),
+        radial-gradient(ellipse 40% 60% at 60% 90%, rgba(61,114,25,0.15) 0%, transparent 50%);
+      pointer-events: none;
+    }
+
+    #gallery .section-inner { position: relative; z-index: 2; margin-bottom: 52px; }
+    #gallery .section-title { color: var(--white); }
+    #gallery .section-label { color: var(--green-lt); }
+    #gallery .section-label::before { background: var(--green-lt); }
+    #gallery .section-sub   { color: rgba(255,255,255,0.55); }
+    #gallery .divider       { box-shadow: 0 1px 8px rgba(118,196,66,0.6); }
 
     .gallery-grid {
+      position: relative;
+      z-index: 2;
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 3px;
+      gap: 4px;
     }
 
     .gallery-item {
       overflow: hidden;
       position: relative;
-      aspect-ratio: 1;
     }
 
-    .gallery-item.wide {
-      grid-column: span 2;
-      aspect-ratio: 2/1;
-    }
+    .gallery-item.wide { grid-column: span 2; }
 
     .gallery-item img {
       width: 100%;
       height: 100%;
       object-fit: cover;
       display: block;
-      transition: transform 0.5s ease, filter 0.4s;
-      filter: brightness(0.8);
+      transition: transform 0.6s ease, filter 0.4s;
+      filter: brightness(0.88) saturate(1.05);
     }
 
-    .gallery-item:hover img {
-      transform: scale(1.05);
-      filter: brightness(1);
+    .gallery-item:nth-child(1) { aspect-ratio: 2/1; }
+    .gallery-item:nth-child(2) { aspect-ratio: 1/1; }
+    .gallery-item:nth-child(3) { aspect-ratio: 1/1; }
+    .gallery-item:nth-child(4) { aspect-ratio: 2/1; }
+
+    .gallery-item:nth-child(1) img { object-position: center 20%; }
+    .gallery-item:nth-child(2) img { object-position: center 15%; }
+    .gallery-item:nth-child(3) img { object-position: center 25%; }
+    .gallery-item:nth-child(4) img { object-position: center 30%; }
+
+    /* green overlay tint on hover */
+    .gallery-item::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(118,196,66,0.15), transparent);
+      opacity: 0;
+      transition: opacity 0.4s;
     }
+
+    .gallery-item:hover img { transform: scale(1.06); filter: brightness(1) saturate(1.1); }
+    .gallery-item:hover::after { opacity: 1; }
 
     /* ── REVIEWS ─────────────────────────────────────────────── */
-    #reviews { background: var(--black); }
+    #reviews {
+      background: var(--cream);
+      position: relative;
+    }
 
-    .reviews-header { margin-bottom: 56px; }
+    /* subtle diagonal stripe texture */
+    #reviews::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: repeating-linear-gradient(
+        -45deg,
+        transparent,
+        transparent 18px,
+        rgba(118,196,66,0.05) 18px,
+        rgba(118,196,66,0.05) 19px
+      );
+      pointer-events: none;
+    }
+
+    .reviews-header { margin-bottom: 56px; position: relative; z-index: 1; }
 
     .google-badge {
       display: inline-flex;
       align-items: center;
       gap: 12px;
-      background: var(--black-3);
-      border: 1px solid rgba(118,196,66,0.3);
+      background: var(--white);
+      border: 1px solid rgba(118,196,66,0.25);
       border-radius: 40px;
       padding: 10px 20px 10px 16px;
-      margin-bottom: 28px;
+      margin-bottom: 24px;
+      box-shadow: var(--shadow-sm), inset 0 1px 0 rgba(255,255,255,0.9);
     }
 
     .google-logo {
@@ -557,7 +888,7 @@
       align-items: center;
       gap: 6px;
       font-size: 13px;
-      color: var(--grey-lt);
+      color: var(--text-lt);
     }
 
     .stars-gold { color: #F5A623; font-size: 14px; letter-spacing: 1px; }
@@ -565,64 +896,83 @@
     .reviews-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 2px;
+      gap: 20px;
+      position: relative;
+      z-index: 1;
     }
 
     .review-card {
-      background: var(--black-3);
+      background: var(--white);
+      border-radius: 12px;
       padding: 32px 28px;
       position: relative;
-      transition: background 0.3s;
-      border-top: 2px solid transparent;
+      box-shadow:
+        0 1px 3px rgba(0,0,0,0.04),
+        0 4px 16px rgba(40,80,20,0.08),
+        0 12px 32px rgba(40,80,20,0.05);
+      border: 1px solid rgba(118,196,66,0.1);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    /* ambient inner highlight */
+    .review-card::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 12px;
+      background: linear-gradient(135deg, rgba(255,255,255,0.5) 0%, transparent 60%);
+      pointer-events: none;
     }
 
     .review-card:hover {
-      background: var(--black-4);
-      border-top-color: var(--green);
+      transform: translateY(-4px);
+      box-shadow:
+        0 2px 6px rgba(0,0,0,0.05),
+        0 8px 28px rgba(40,80,20,0.13),
+        0 20px 48px rgba(40,80,20,0.08);
+    }
+
+    /* left green accent bar */
+    .review-card::before {
+      content: '';
+      position: absolute;
+      top: 24px; left: 0;
+      width: 3px; height: 48px;
+      background: linear-gradient(to bottom, var(--green), var(--green-lt));
+      border-radius: 0 2px 2px 0;
     }
 
     .review-stars { color: #F5A623; font-size: 15px; letter-spacing: 2px; margin-bottom: 14px; }
 
     .review-text {
       font-size: 13px;
-      line-height: 1.85;
-      color: var(--grey-lt);
+      line-height: 1.9;
+      color: var(--text-lt);
       font-weight: 300;
       margin-bottom: 22px;
       font-style: italic;
     }
 
-    .review-author {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
+    .review-author { display: flex; align-items: center; gap: 12px; }
 
     .review-avatar {
-      width: 38px; height: 38px;
+      width: 40px; height: 40px;
       border-radius: 50%;
-      background: var(--green);
+      background: linear-gradient(135deg, var(--green) 0%, var(--green-dk) 100%);
       display: flex;
       align-items: center;
       justify-content: center;
-      color: var(--black);
-      font-size: 15px;
-      font-weight: 700;
+      color: var(--white);
+      font-size: 16px;
+      font-weight: 600;
       font-family: 'Cormorant Garamond', serif;
       flex-shrink: 0;
+      box-shadow: 0 2px 8px rgba(90,163,42,0.35);
     }
 
-    .review-name {
-      font-size: 13px;
-      font-weight: 600;
-      color: var(--white);
-    }
+    .review-name { font-size: 13px; font-weight: 700; color: var(--dark); }
 
-    .review-date {
-      font-size: 11px;
-      color: var(--grey);
-      margin-top: 2px;
-    }
+    .review-date { font-size: 11px; color: var(--grey); margin-top: 2px; }
 
     .review-google-icon {
       position: absolute;
@@ -630,8 +980,7 @@
       font-size: 11px;
       font-weight: 700;
       font-family: 'Montserrat', sans-serif;
-      letter-spacing: -0.3px;
-      opacity: 0.8;
+      opacity: 0.75;
     }
 
     .reviews-note {
@@ -639,38 +988,72 @@
       margin-top: 48px;
       font-size: 13px;
       color: var(--grey);
+      position: relative;
+      z-index: 1;
     }
 
-    .reviews-note a {
-      color: var(--green);
-      font-weight: 600;
-    }
+    .reviews-note a { color: var(--green-dk); font-weight: 700; }
 
     /* ── CONTACT ─────────────────────────────────────────────── */
     #contact {
-      background: var(--black-2);
+      background: var(--dark-2);
+      position: relative;
       text-align: center;
-      border-top: 1px solid rgba(118,196,66,0.2);
+      overflow: hidden;
     }
+
+    /* radial light glow */
+    #contact::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 80% 80% at 50% 50%, rgba(118,196,66,0.1) 0%, transparent 65%),
+        radial-gradient(ellipse 40% 50% at 10% 80%, rgba(118,196,66,0.07) 0%, transparent 50%);
+      pointer-events: none;
+    }
+
+    /* diagonal stripe over dark */
+    #contact::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: repeating-linear-gradient(
+        55deg,
+        transparent,
+        transparent 20px,
+        rgba(118,196,66,0.04) 20px,
+        rgba(118,196,66,0.04) 21px
+      );
+      pointer-events: none;
+    }
+
+    .contact-inner { position: relative; z-index: 2; }
 
     .contact-logo {
       height: 80px;
       margin: 0 auto 36px;
+      filter: drop-shadow(0 4px 16px rgba(0,0,0,0.4));
     }
 
     .contact-sub {
       font-size: 14px;
-      color: var(--grey-lt);
+      color: rgba(255,255,255,0.6);
       line-height: 1.9;
-      max-width: 480px;
+      max-width: 460px;
       margin: 0 auto 48px;
       font-weight: 300;
     }
 
+    #contact .section-label { color: var(--green-lt); justify-content: center; }
+    #contact .section-label::before { background: var(--green-lt); }
+    #contact .section-title { color: var(--white); }
+    #contact .divider { margin: 22px auto; box-shadow: 0 1px 8px rgba(118,196,66,0.6); }
+
     .contact-methods {
       display: flex;
       justify-content: center;
-      gap: 24px;
+      gap: 20px;
       flex-wrap: wrap;
       margin-bottom: 44px;
     }
@@ -679,17 +1062,26 @@
       display: flex;
       align-items: center;
       gap: 12px;
-      color: var(--grey-lt);
+      color: rgba(255,255,255,0.7);
       text-decoration: none;
       font-size: 13px;
       font-weight: 400;
-      transition: color 0.2s, border-color 0.2s;
-      padding: 14px 24px;
-      border: 1px solid rgba(255,255,255,0.12);
-      border-radius: 2px;
+      padding: 15px 26px;
+      border: 1px solid rgba(118,196,66,0.25);
+      border-radius: 6px;
+      background: rgba(118,196,66,0.05);
+      backdrop-filter: blur(4px);
+      transition: all 0.25s;
     }
 
-    .contact-method:hover { color: var(--green); border-color: var(--green); }
+    .contact-method:hover {
+      color: var(--white);
+      border-color: var(--green);
+      background: rgba(118,196,66,0.12);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 16px rgba(118,196,66,0.2);
+    }
+
     .contact-method svg { flex-shrink: 0; }
 
     .contact-cta-group {
@@ -699,31 +1091,48 @@
       flex-wrap: wrap;
     }
 
+    .btn-outline-light {
+      display: inline-block;
+      background: transparent;
+      color: rgba(255,255,255,0.75);
+      padding: 15px 42px;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      border: 1.5px solid rgba(255,255,255,0.2);
+      border-radius: 3px;
+      transition: all 0.25s;
+    }
+
+    .btn-outline-light:hover {
+      border-color: var(--green-lt);
+      color: var(--green-lt);
+      transform: translateY(-2px);
+    }
+
     /* ── FOOTER ──────────────────────────────────────────────── */
     footer {
-      background: var(--black);
-      border-top: 1px solid rgba(118,196,66,0.15);
-      padding: 28px 48px;
+      background: var(--dark);
+      border-top: 1px solid rgba(118,196,66,0.2);
+      padding: 28px 52px;
       display: flex;
       align-items: center;
       justify-content: space-between;
       flex-wrap: wrap;
       gap: 16px;
+      box-shadow: inset 0 1px 0 rgba(118,196,66,0.1);
     }
 
-    .footer-logo { height: 36px; }
+    .footer-logo { height: 36px; filter: brightness(0.9); }
 
-    .footer-text {
-      font-size: 12px;
-      color: var(--grey);
-      font-weight: 300;
-    }
+    .footer-text { font-size: 12px; color: rgba(255,255,255,0.35); font-weight: 300; }
 
     .footer-links { display: flex; gap: 24px; }
 
     .footer-links a {
       font-size: 12px;
-      color: var(--grey);
+      color: rgba(255,255,255,0.4);
       text-decoration: none;
       transition: color 0.2s;
     }
@@ -731,34 +1140,59 @@
     .footer-links a:hover { color: var(--green); }
 
     /* ── RESPONSIVE ──────────────────────────────────────────── */
+    @media (max-width: 1000px) {
+      .services-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
     @media (max-width: 900px) {
       nav { padding: 0 20px; }
       .nav-links { display: none; }
       .nav-links.open {
         display: flex; flex-direction: column;
         position: fixed; top: 72px; left: 0; right: 0;
-        background: rgba(0,0,0,0.97);
-        border-bottom: 1px solid rgba(118,196,66,0.3);
+        background: var(--dark);
+        border-bottom: 2px solid var(--green);
         padding: 24px; gap: 20px;
+        box-shadow: 0 8px 32px rgba(0,0,0,0.3);
       }
       .hamburger { display: flex; }
 
       section { padding: 72px 24px; }
+      #gallery { padding: 72px 24px 0; }
 
-      .about-grid { grid-template-columns: 1fr; gap: 36px; }
-      .about-image-wrap img { height: 360px; }
-      .about-badge { right: 0; bottom: -12px; }
+      .about-grid { grid-template-columns: 1fr; gap: 52px; }
+      .about-image-wrap img { height: 380px; }
 
-      .trust-bar { gap: 24px; padding: 16px 24px; }
+      .hero-photos {
+        flex-direction: column;
+        align-items: center;
+        gap: 16px;
+        padding: 0 32px;
+      }
+      .hero-photo-card {
+        max-width: 320px;
+        width: 100%;
+      }
+      .hero-photo-card:nth-child(1),
+      .hero-photo-card:nth-child(2),
+      .hero-photo-card:nth-child(3) {
+        transform: none;
+        border-radius: 12px;
+      }
+      .hero-photo-card img { aspect-ratio: 4/3; }
+
+      .gallery-grid { grid-template-columns: 1fr 1fr; }
+      .gallery-item.wide { grid-column: span 2; }
+
+      .trust-bar { gap: 20px; padding: 16px 24px; }
+      .trust-sep { display: none; }
+
       footer { flex-direction: column; text-align: center; padding: 24px; }
     }
 
-    @media (max-width: 640px) {
-      .hero-photos { grid-template-columns: 1fr; }
-      .hero-photo   { aspect-ratio: 16/9; }
-      .gallery-grid { grid-template-columns: 1fr 1fr; }
-      .gallery-item.wide { grid-column: span 2; aspect-ratio: 16/9; }
-      .hero-logo { height: 80px; }
+    @media (max-width: 580px) {
+      .services-grid { grid-template-columns: 1fr; }
+      .hero-photo-card { max-width: 100%; }
     }
   </style>
 </head>
@@ -783,32 +1217,36 @@
 
 <!-- ── HERO ─────────────────────────────────────────────────── -->
 <section class="hero" id="home">
-  <div class="hero-top">
+  <div class="hero-inner">
     <img src="images/logo.png" alt="Bayside Dog Grooming Salon" class="hero-logo" />
-    <p class="hero-tagline">Bayside, Melbourne</p>
+
+    <div class="hero-rule">
+      <div class="hero-rule-dot"></div>
+    </div>
+
+    <p class="hero-eyebrow">Bayside, Melbourne</p>
     <h1 class="hero-title">Your Dog Deserves<br /><em>the Very Best</em></h1>
-    <p class="hero-sub">Professional grooming for every breed — trusted by Bayside families for years.<br />Every dog leaves looking &amp; feeling amazing.</p>
+    <p class="hero-sub">Professional grooming for every breed — trusted by Bayside families for years.<br />Every dog leaves looking and feeling absolutely amazing.</p>
+
     <div class="hero-buttons">
       <a href="#contact" class="btn-green">Book an Appointment</a>
-      <a href="#services" class="btn-outline-green">Our Services</a>
+      <a href="#services" class="btn-outline">Our Services</a>
     </div>
   </div>
 
+  <!-- 3 staggered photo cards -->
   <div class="hero-photos">
-    <div class="hero-photo">
-      <img src="images/gallery-dog-1.webp" alt="Happy dog after grooming at Bayside" />
-      <div class="hero-photo-overlay"></div>
-      <span class="hero-photo-label">Full Groom</span>
+    <div class="hero-photo-card">
+      <img src="images/gallery-dog-1.webp" alt="Cavoodle freshly groomed at Bayside" />
+      <div class="hero-photo-label"><span>Full Groom</span></div>
     </div>
-    <div class="hero-photo">
-      <img src="images/gallery-dog-2.webp" alt="Dog beautifully groomed at Bayside Salon" />
-      <div class="hero-photo-overlay"></div>
-      <span class="hero-photo-label">Bath &amp; Style</span>
+    <div class="hero-photo-card">
+      <img src="images/hero-grooming.webp" alt="Dachshund after grooming at Bayside Salon" />
+      <div class="hero-photo-label"><span>Bath &amp; Style</span></div>
     </div>
-    <div class="hero-photo">
-      <img src="images/gallery-dog-3.webp" alt="Dog looking great after a professional groom" />
-      <div class="hero-photo-overlay"></div>
-      <span class="hero-photo-label">Nail &amp; Tidy</span>
+    <div class="hero-photo-card">
+      <img src="images/about-salon.webp" alt="Golden retriever looking great after a groom" />
+      <div class="hero-photo-label"><span>Nail &amp; Tidy</span></div>
     </div>
   </div>
 </section>
@@ -816,23 +1254,27 @@
 <!-- ── TRUST BAR ─────────────────────────────────────────────── -->
 <div class="trust-bar">
   <div class="trust-item">
-    <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+    <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
     4.0 Google Rating
   </div>
+  <div class="trust-sep"></div>
   <div class="trust-item">
-    <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+    <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
     All Breeds Welcome
   </div>
+  <div class="trust-sep"></div>
   <div class="trust-item">
-    <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+    <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
     Gentle &amp; Caring
   </div>
+  <div class="trust-sep"></div>
   <div class="trust-item">
-    <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+    <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
     Mon – Sat
   </div>
+  <div class="trust-sep"></div>
   <div class="trust-item">
-    <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+    <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
     Experienced Groomers
   </div>
 </div>
@@ -844,7 +1286,7 @@
       <p class="section-label">What We Offer</p>
       <h2 class="section-title">Tailored Grooming for <em>Every Dog</em></h2>
       <div class="divider"></div>
-      <p class="section-sub">From a quick freshen-up to a full pamper session — we offer a range of grooming services to suit every breed and every budget.</p>
+      <p class="section-sub">From a quick freshen-up to a full pamper session — grooming services to suit every breed and every budget.</p>
     </div>
     <div class="services-grid">
 
@@ -890,7 +1332,7 @@
           </svg>
         </div>
         <h3>Puppy's First Groom</h3>
-        <p>A gentle introduction to the salon experience — designed to build confidence and make grooming a positive routine from day one.</p>
+        <p>A gentle introduction to the salon — designed to build confidence and make grooming a positive routine from day one.</p>
       </div>
 
       <div class="service-card">
@@ -907,11 +1349,12 @@
       <div class="service-card">
         <div class="service-icon">
           <svg width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
-            <line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/>
+            <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/>
+            <polyline points="17 6 23 6 23 12"/>
           </svg>
         </div>
         <h3>Tidy-Up Trim</h3>
-        <p>A neat scissor tidy of face, paws and sanitary areas to keep your dog looking fresh between full grooming appointments.</p>
+        <p>Scissor tidy of face, paws and sanitary areas to keep your dog looking fresh between full grooming appointments.</p>
       </div>
 
     </div>
@@ -924,7 +1367,7 @@
     <div class="about-grid">
 
       <div class="about-image-wrap">
-        <img src="images/about-salon.webp" alt="Groomer caring for a dog at Bayside Dog Grooming Salon" />
+        <img src="images/about-salon.webp" alt="Golden retriever freshly groomed at Bayside Dog Grooming Salon" />
         <div class="about-badge">
           <span class="num">4.0</span>
           <span class="lbl">Stars</span>
@@ -939,7 +1382,7 @@
           At Bayside Dog Grooming Salon we treat every dog like our own. Our experienced team, led by Vanessa and her dedicated staff, is passionate about making your pet look and feel their absolute best — in a warm, calm and welcoming environment.
         </p>
         <p class="section-sub" style="max-width:100%; margin-top: 18px;">
-          Dogs are able to have a bit of a play with each other while waiting their turns, keeping them relaxed and happy. From golden retrievers and schnauzers to pugs and cavoodles — every breed is welcome and every dog is given the care and attention they deserve.
+          Dogs are able to have a bit of a play with each other while waiting their turns, keeping them relaxed and happy. From golden retrievers and schnauzers to pugs and cavoodles — every breed is welcome and every dog is given the genuine care and attention they deserve.
         </p>
         <div class="about-stats">
           <div class="stat">
@@ -964,17 +1407,24 @@
 <!-- ── GALLERY ────────────────────────────────────────────────── -->
 <section id="gallery">
   <div class="section-inner">
-    <div class="gallery-header">
-      <p class="section-label">Fresh From the Salon</p>
-      <h2 class="section-title">Happy Dogs, <em>Happy Lives</em></h2>
-      <div class="divider"></div>
-    </div>
+    <p class="section-label">Fresh From the Salon</p>
+    <h2 class="section-title">Happy Dogs, <em>Happy Lives</em></h2>
+    <div class="divider"></div>
+    <p class="section-sub">Every dog that comes through our doors leaves looking — and feeling — absolutely amazing.</p>
   </div>
   <div class="gallery-grid">
-    <div class="gallery-item wide"><img src="images/hero-grooming.webp" alt="Dog beautifully groomed at Bayside" /></div>
-    <div class="gallery-item"><img src="images/gallery-dog-3.webp" alt="Happy dog after grooming" /></div>
-    <div class="gallery-item"><img src="images/gallery-dog-1.webp" alt="Dog after a full groom" /></div>
-    <div class="gallery-item wide"><img src="images/gallery-dog-2.webp" alt="Dog looking great after a groom" /></div>
+    <div class="gallery-item wide">
+      <img src="images/gallery-dog-1.webp" alt="Cavoodle looking beautiful after a full groom" />
+    </div>
+    <div class="gallery-item">
+      <img src="images/gallery-dog-3.webp" alt="Cavoodle in car after grooming appointment" />
+    </div>
+    <div class="gallery-item">
+      <img src="images/hero-grooming.webp" alt="Dachshund after salon groom" />
+    </div>
+    <div class="gallery-item wide">
+      <img src="images/gallery-dog-2.webp" alt="Rottweiler relaxed and happy after grooming" />
+    </div>
   </div>
 </section>
 
@@ -988,8 +1438,8 @@
         </span>
         <div class="google-rating">
           <span class="stars-gold">★★★★</span>
-          <strong style="color:white;">4.0</strong>
-          <span>· Google Reviews</span>
+          <strong>4.0</strong>
+          <span style="color:#aaa;">· Google Reviews</span>
         </div>
       </div>
       <p class="section-label">Happy Customers</p>
@@ -1066,7 +1516,7 @@
 
       <div class="review-card">
         <div class="review-stars">★★★★★</div>
-        <p class="review-text">"We love taking our dog here! The staff are friendly and professional and the dogs are able to have a bit of a play with each other while waiting their turns. My dog always comes out looking (and smelling) great and always with a cute bow tie on his collar."</p>
+        <p class="review-text">"We love taking our dog here! The staff are friendly and professional and the dogs are able to have a bit of a play with each other while waiting their turns. My dog always comes out looking and smelling great — always with a cute bow tie on his collar."</p>
         <div class="review-author">
           <div class="review-avatar">G</div>
           <div>
@@ -1103,12 +1553,12 @@
 
 <!-- ── CONTACT ────────────────────────────────────────────────── -->
 <section id="contact">
-  <div class="section-inner">
+  <div class="section-inner contact-inner">
     <img src="images/logo.png" alt="Bayside Dog Grooming Salon" class="contact-logo" />
-    <p class="section-label" style="text-align:center;">Get in Touch</p>
-    <h2 class="section-title" style="text-align:center;">Ready to Book?</h2>
-    <div class="divider" style="margin: 20px auto 0;"></div>
-    <p class="contact-sub" style="margin-top:24px;">We'd love to meet your dog! Reach out via Facebook or our directory listing and we'll find the perfect grooming service for your pup.</p>
+    <p class="section-label">Get in Touch</p>
+    <h2 class="section-title">Ready to Book?</h2>
+    <div class="divider"></div>
+    <p class="contact-sub">We'd love to meet your dog! Reach out via Facebook or our directory listing and we'll find the perfect grooming service for your pup.</p>
 
     <div class="contact-methods">
       <a href="https://www.facebook.com/p/Bayside-Dog-Grooming-Salon-100063639123757/" target="_blank" rel="noopener" class="contact-method">
@@ -1123,7 +1573,7 @@
 
     <div class="contact-cta-group">
       <a href="https://www.facebook.com/p/Bayside-Dog-Grooming-Salon-100063639123757/" target="_blank" rel="noopener" class="btn-green">Message on Facebook</a>
-      <a href="https://bayside-dog-grooming-salon.wheree.com/" target="_blank" rel="noopener" class="btn-outline-green">View Directory Listing</a>
+      <a href="https://bayside-dog-grooming-salon.wheree.com/" target="_blank" rel="noopener" class="btn-outline-light">View Directory Listing</a>
     </div>
   </div>
 </section>
