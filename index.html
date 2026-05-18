@@ -876,12 +876,15 @@
       z-index: 2;
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 4px;
+      gap: 16px;
+      padding: 0 0 80px;
     }
 
     .gallery-item {
       overflow: hidden;
       position: relative;
+      border-radius: 16px;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.35), 0 1px 4px rgba(0,0,0,0.2);
     }
 
     .gallery-item.wide { grid-column: span 2; }
@@ -892,26 +895,18 @@
       object-fit: cover;
       display: block;
       transition: transform 0.6s ease, filter 0.4s;
-      filter: brightness(0.88) saturate(1.05);
+      filter: brightness(0.92) saturate(1.05);
     }
 
     .gallery-item:nth-child(1) { aspect-ratio: 2/1; }
     .gallery-item:nth-child(2) { aspect-ratio: 1/1; }
     .gallery-item:nth-child(3) { aspect-ratio: 1/1; }
     .gallery-item:nth-child(4) { aspect-ratio: 16/9; }
-    .gallery-item.video-item iframe {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      border: none;
-      display: block;
-    }
 
     .gallery-item:nth-child(1) img { object-position: center 20%; }
     .gallery-item:nth-child(2) img { object-position: center 15%; }
     .gallery-item:nth-child(3) img { object-position: center 25%; }
-    .gallery-item:nth-child(4) img { object-position: center 30%; }
+    .gallery-item:nth-child(4) img { object-position: center 40%; }
 
     /* green overlay tint on hover */
     .gallery-item::after {
@@ -1307,8 +1302,9 @@
       }
       .hero-photo-card img { aspect-ratio: 4/3; }
 
-      .gallery-grid { grid-template-columns: 1fr 1fr; }
+      .gallery-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
       .gallery-item.wide { grid-column: span 2; }
+      .gallery-item { border-radius: 12px; }
 
       .trust-bar { gap: 20px; padding: 16px 24px; }
       .trust-sep { display: none; }
@@ -1550,15 +1546,8 @@
     <div class="gallery-item">
       <img src="images/hero-grooming.webp" alt="Dachshund after salon groom" />
     </div>
-    <div class="gallery-item wide video-item">
-      <iframe
-        src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Fshare%2Fr%2F1EgbVouqQA%2F&show_text=false&width=auto&mute=0"
-        scrolling="no"
-        frameborder="0"
-        allowfullscreen="true"
-        allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
-        title="Bayside Dog Grooming video">
-      </iframe>
+    <div class="gallery-item wide">
+      <img src="images/gallery-dog-2.webp" alt="Rottweiler relaxing after a groom" />
     </div>
   </div>
 </section>
