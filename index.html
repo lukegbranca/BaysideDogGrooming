@@ -423,17 +423,31 @@
       Linear timing with many stops = perfectly constant orbital speed.
     */
     @keyframes orbit {
-      0%   { transform: translateX(0px)   translateY(0px)  scale(1.00); z-index: 3; opacity: 1.00; }
-      10%  { transform: translateX(173px) translateY(4px)  scale(0.97); z-index: 3; opacity: 0.97; }
-      12%  { transform: translateX(202px) translateY(5px)  scale(0.95); z-index: 2; opacity: 0.95; }
-      25%  { transform: translateX(288px) translateY(8px)  scale(0.88); z-index: 2; opacity: 0.88; }
-      37%  { transform: translateX(202px) translateY(12px) scale(0.82); z-index: 1; opacity: 0.65; }
-      50%  { transform: translateX(0px)   translateY(14px) scale(0.78); z-index: 1; opacity: 0.35; }
-      63%  { transform: translateX(-202px) translateY(12px) scale(0.82); z-index: 1; opacity: 0.65; }
-      75%  { transform: translateX(-288px) translateY(8px)  scale(0.88); z-index: 2; opacity: 0.88; }
-      88%  { transform: translateX(-202px) translateY(5px)  scale(0.95); z-index: 2; opacity: 0.95; }
-      90%  { transform: translateX(-173px) translateY(4px)  scale(0.97); z-index: 3; opacity: 0.97; }
-      100% { transform: translateX(0px)   translateY(0px)  scale(1.00); z-index: 3; opacity: 1.00; }
+      0%   { transform: translateX(0px)    translateY(0px)  scale(1.000); z-index: 3; opacity: 1.000; }
+      5%   { transform: translateX(89px)   translateY(0px)  scale(0.994); z-index: 3; opacity: 0.984; }
+      10%  { transform: translateX(169px)  translateY(1px)  scale(0.979); z-index: 3; opacity: 0.938; }
+      12%  { transform: translateX(202px)  translateY(2px)  scale(0.972); z-index: 2; opacity: 0.916; }
+      15%  { transform: translateX(233px)  translateY(3px)  scale(0.955); z-index: 2; opacity: 0.866; }
+      20%  { transform: translateX(274px)  translateY(5px)  scale(0.924); z-index: 2; opacity: 0.775; }
+      25%  { transform: translateX(288px)  translateY(7px)  scale(0.890); z-index: 2; opacity: 0.675; }
+      30%  { transform: translateX(274px)  translateY(9px)  scale(0.856); z-index: 2; opacity: 0.575; }
+      35%  { transform: translateX(233px)  translateY(11px) scale(0.825); z-index: 2; opacity: 0.484; }
+      37%  { transform: translateX(202px)  translateY(12px) scale(0.812); z-index: 1; opacity: 0.450; }
+      40%  { transform: translateX(169px)  translateY(13px) scale(0.801); z-index: 1; opacity: 0.416; }
+      45%  { transform: translateX(89px)   translateY(14px) scale(0.785); z-index: 1; opacity: 0.366; }
+      50%  { transform: translateX(0px)    translateY(14px) scale(0.780); z-index: 1; opacity: 0.350; }
+      55%  { transform: translateX(-89px)  translateY(14px) scale(0.785); z-index: 1; opacity: 0.366; }
+      60%  { transform: translateX(-169px) translateY(13px) scale(0.801); z-index: 1; opacity: 0.416; }
+      63%  { transform: translateX(-202px) translateY(12px) scale(0.812); z-index: 2; opacity: 0.450; }
+      65%  { transform: translateX(-233px) translateY(11px) scale(0.825); z-index: 2; opacity: 0.484; }
+      70%  { transform: translateX(-274px) translateY(9px)  scale(0.856); z-index: 2; opacity: 0.575; }
+      75%  { transform: translateX(-288px) translateY(7px)  scale(0.890); z-index: 2; opacity: 0.675; }
+      80%  { transform: translateX(-274px) translateY(5px)  scale(0.924); z-index: 2; opacity: 0.775; }
+      85%  { transform: translateX(-233px) translateY(3px)  scale(0.955); z-index: 2; opacity: 0.866; }
+      88%  { transform: translateX(-202px) translateY(2px)  scale(0.972); z-index: 3; opacity: 0.916; }
+      90%  { transform: translateX(-169px) translateY(1px)  scale(0.979); z-index: 3; opacity: 0.938; }
+      95%  { transform: translateX(-89px)  translateY(0px)  scale(0.994); z-index: 3; opacity: 0.984; }
+      100% { transform: translateX(0px)    translateY(0px)  scale(1.000); z-index: 3; opacity: 1.000; }
     }
 
     .hero-photo-card {
@@ -447,7 +461,7 @@
         0 6px 20px rgba(0,0,0,0.12),
         0 0 0 3px #fff,
         0 0 0 5px #76c442;
-      animation: orbit 18s linear infinite;
+      animation: orbit 22s linear infinite;
     }
 
     .hero-photo-card:nth-child(1) { animation-delay:   0s; }
@@ -1270,17 +1284,31 @@
       .hero-photos { height: 480px; padding: 20px 24px 0; }
       .hero-photo-card { width: 260px; }
       @keyframes orbit {
-        0%   { transform: translateX(0px)   translateY(0px)  scale(1.00); z-index: 3; opacity: 1.00; }
-        10%  { transform: translateX(100px) translateY(4px)  scale(0.97); z-index: 3; opacity: 0.97; }
-        12%  { transform: translateX(118px) translateY(5px)  scale(0.95); z-index: 2; opacity: 0.95; }
-        25%  { transform: translateX(168px) translateY(8px)  scale(0.88); z-index: 2; opacity: 0.88; }
-        37%  { transform: translateX(118px) translateY(12px) scale(0.82); z-index: 1; opacity: 0.65; }
-        50%  { transform: translateX(0px)   translateY(14px) scale(0.78); z-index: 1; opacity: 0.35; }
-        63%  { transform: translateX(-118px) translateY(12px) scale(0.82); z-index: 1; opacity: 0.65; }
-        75%  { transform: translateX(-168px) translateY(8px)  scale(0.88); z-index: 2; opacity: 0.88; }
-        88%  { transform: translateX(-118px) translateY(5px)  scale(0.95); z-index: 2; opacity: 0.95; }
-        90%  { transform: translateX(-100px) translateY(4px)  scale(0.97); z-index: 3; opacity: 0.97; }
-        100% { transform: translateX(0px)   translateY(0px)  scale(1.00); z-index: 3; opacity: 1.00; }
+        0%   { transform: translateX(0px)    translateY(0px)  scale(1.000); z-index: 3; opacity: 1.000; }
+        5%   { transform: translateX(52px)   translateY(0px)  scale(0.994); z-index: 3; opacity: 0.984; }
+        10%  { transform: translateX(99px)   translateY(1px)  scale(0.979); z-index: 3; opacity: 0.938; }
+        12%  { transform: translateX(118px)  translateY(2px)  scale(0.972); z-index: 2; opacity: 0.916; }
+        15%  { transform: translateX(136px)  translateY(3px)  scale(0.955); z-index: 2; opacity: 0.866; }
+        20%  { transform: translateX(160px)  translateY(5px)  scale(0.924); z-index: 2; opacity: 0.775; }
+        25%  { transform: translateX(168px)  translateY(7px)  scale(0.890); z-index: 2; opacity: 0.675; }
+        30%  { transform: translateX(160px)  translateY(9px)  scale(0.856); z-index: 2; opacity: 0.575; }
+        35%  { transform: translateX(136px)  translateY(11px) scale(0.825); z-index: 2; opacity: 0.484; }
+        37%  { transform: translateX(118px)  translateY(12px) scale(0.812); z-index: 1; opacity: 0.450; }
+        40%  { transform: translateX(99px)   translateY(13px) scale(0.801); z-index: 1; opacity: 0.416; }
+        45%  { transform: translateX(52px)   translateY(14px) scale(0.785); z-index: 1; opacity: 0.366; }
+        50%  { transform: translateX(0px)    translateY(14px) scale(0.780); z-index: 1; opacity: 0.350; }
+        55%  { transform: translateX(-52px)  translateY(14px) scale(0.785); z-index: 1; opacity: 0.366; }
+        60%  { transform: translateX(-99px)  translateY(13px) scale(0.801); z-index: 1; opacity: 0.416; }
+        63%  { transform: translateX(-118px) translateY(12px) scale(0.812); z-index: 2; opacity: 0.450; }
+        65%  { transform: translateX(-136px) translateY(11px) scale(0.825); z-index: 2; opacity: 0.484; }
+        70%  { transform: translateX(-160px) translateY(9px)  scale(0.856); z-index: 2; opacity: 0.575; }
+        75%  { transform: translateX(-168px) translateY(7px)  scale(0.890); z-index: 2; opacity: 0.675; }
+        80%  { transform: translateX(-160px) translateY(5px)  scale(0.924); z-index: 2; opacity: 0.775; }
+        85%  { transform: translateX(-136px) translateY(3px)  scale(0.955); z-index: 2; opacity: 0.866; }
+        88%  { transform: translateX(-118px) translateY(2px)  scale(0.972); z-index: 3; opacity: 0.916; }
+        90%  { transform: translateX(-99px)  translateY(1px)  scale(0.979); z-index: 3; opacity: 0.938; }
+        95%  { transform: translateX(-52px)  translateY(0px)  scale(0.994); z-index: 3; opacity: 0.984; }
+        100% { transform: translateX(0px)    translateY(0px)  scale(1.000); z-index: 3; opacity: 1.000; }
       }
 
       .gallery-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
