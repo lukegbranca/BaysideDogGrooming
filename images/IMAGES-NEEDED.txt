@@ -1,0 +1,26 @@
+Place the following images in this folder (images/).
+All filenames must match exactly as used in index.html:
+
+HERO
+  hero-dogs.jpg             — Wide hero banner photo of groomed dogs (1600x700px recommended)
+
+ABOUT
+  about-groomer.jpg         — Photo of groomer(s) with a dog (800x600px recommended)
+
+SERVICES
+  service-full-groom.jpg    — Dog getting a full groom
+  service-bath-brush.jpg    — Dog being bathed or brushed
+  service-nail-trim.jpg     — Dog nail trimming
+  service-puppy-groom.jpg   — Puppy getting first groom
+  service-deshed.jpg        — De-shedding treatment / double-coated dog
+  service-tidy-up.jpg       — Tidy-up trim / scissor work
+
+GALLERY
+  gallery-golden-retriever.jpg  — Golden retriever after groom (wide, 800x400px)
+  gallery-schnauzer.jpg         — Mini Schnauzer
+  gallery-pug.jpg               — Clean pug
+  gallery-groodle.jpg           — Groodle
+  gallery-cavoodle.jpg          — Cavoodle
+  gallery-salon.jpg             — Inside the salon (wide, 800x400px)
+
+All images should be JPEG format, optimised for web (aim for <300KB each).
