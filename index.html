@@ -918,80 +918,6 @@
     .gallery-item:hover img { transform: scale(1.06); filter: brightness(1) saturate(1.1); }
     .gallery-item:hover::after { opacity: 1; }
 
-    /* review overlay on gallery-dog-2 */
-    .gallery-item-reviews {
-      position: absolute;
-      inset: 0;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: flex-start;
-      padding: 24px 28px;
-      background: linear-gradient(100deg, rgba(8,18,5,0.78) 0%, rgba(8,18,5,0.55) 55%, transparent 100%);
-      z-index: 2;
-      pointer-events: none;
-      gap: 10px;
-    }
-
-    .gallery-review-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: var(--white);
-      border-radius: 20px;
-      padding: 5px 14px 5px 10px;
-      box-shadow: 0 2px 12px rgba(0,0,0,0.3);
-    }
-
-    .gallery-review-badge .g-logo {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 13px;
-      font-weight: 700;
-      letter-spacing: -0.5px;
-    }
-
-    .gallery-review-badge .g-stars { color: #F5A623; font-size: 11px; }
-    .gallery-review-badge .g-score { font-size: 12px; font-weight: 700; color: var(--dark); }
-
-    .gallery-review-snippet {
-      background: rgba(10,22,6,0.82);
-      border: 1px solid rgba(118,196,66,0.3);
-      border-radius: 10px;
-      padding: 12px 14px;
-      max-width: 310px;
-    }
-
-    .gallery-review-snippet p {
-      font-size: 12px;
-      font-weight: 300;
-      color: rgba(255,255,255,0.9);
-      font-style: italic;
-      line-height: 1.55;
-      margin-bottom: 9px;
-    }
-
-    .gallery-review-author {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .gallery-review-avatar {
-      width: 24px; height: 24px;
-      border-radius: 50%;
-      background: var(--green);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 11px;
-      font-weight: 700;
-      color: var(--dark);
-      flex-shrink: 0;
-    }
-
-    .gallery-review-name { font-size: 11px; font-weight: 600; color: rgba(255,255,255,0.8); }
-    .gallery-review-stars { color: #F5A623; font-size: 10px; margin-left: auto; }
-
     /* ── REVIEWS ─────────────────────────────────────────────── */
     #reviews {
       background: var(--cream);
@@ -1618,31 +1544,6 @@
     </div>
     <div class="gallery-item wide">
       <img src="images/gallery-dog-2.webp" alt="Dog relaxed and happy after grooming" />
-      <div class="gallery-item-reviews">
-        <div class="gallery-review-badge">
-          <span class="g-logo">
-            <span style="color:#4285F4">G</span><span style="color:#EA4335">o</span><span style="color:#FBBC05">o</span><span style="color:#4285F4">g</span><span style="color:#34A853">l</span><span style="color:#EA4335">e</span>
-          </span>
-          <span class="g-stars">★★★★</span>
-          <span class="g-score">4.0</span>
-        </div>
-        <div class="gallery-review-snippet">
-          <p>"First time client today and my fluffball looks divine!! Very happy and the best groom I think he has ever had. I'll be back!"</p>
-          <div class="gallery-review-author">
-            <div class="gallery-review-avatar">M</div>
-            <span class="gallery-review-name">The Meme King101</span>
-            <span class="gallery-review-stars">★★★★★</span>
-          </div>
-        </div>
-        <div class="gallery-review-snippet">
-          <p>"We love taking our dog here! Staff are friendly and professional. My dog always comes out looking and smelling great."</p>
-          <div class="gallery-review-author">
-            <div class="gallery-review-avatar">G</div>
-            <span class="gallery-review-name">George Varghese</span>
-            <span class="gallery-review-stars">★★★★★</span>
-          </div>
-        </div>
-      </div>
     </div>
   </div>
 </section>
